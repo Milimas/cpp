@@ -1,13 +1,6 @@
 #include "HumanA.hpp"
 
-HumanA::HumanA()
-{
-    this->name = "HumanA Object" ;
-    this->weapon.setType("AK-47");
-    std::cout << this->name << ": born" << std::endl ;
-}
-
-HumanA::HumanA( std::string name, Weapon weapon )
+HumanA::HumanA( std::string name, Weapon& weapon ): weapon(weapon)
 {
     this->name = name ;
     this->weapon = weapon ;

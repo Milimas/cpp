@@ -1,23 +1,15 @@
 #include "HumanB.hpp"
 #include "Weapon.hpp"
 
-HumanB::HumanB()
-{
-    this->name = "HumanB Object" ;
-    std::cout << this->name << ": born" << std::endl ;
-}
-
-HumanB::HumanB( std::string name )
+HumanB::HumanB( std::string name ): weapon(NULL)
 {
     this->name = name ;
     std::cout << this->name << ": born" << std::endl ;
 }
 
-HumanB::HumanB( std::string name, Weapon weapon )
+void HumanB::setWeapon( Weapon& weapon )
 {
-    this->name = name ;
-    this->setWeapon(weapon);
-    std::cout << this->name << ": born" << std::endl ;
+    this->weapon = &weapon;
 }
 
 HumanB::~HumanB()
@@ -25,12 +17,7 @@ HumanB::~HumanB()
     std::cout << this->name << ": died" << std::endl ;
 }
 
-void HumanB::setWeapon( Weapon weapon )
-{
-    this->weapon = weapon;
-}
-
 void HumanB::attack()
 {
-    std::cout << this->name << " attacks with their " << this->weapon.getType() << std::endl ;
+    std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl ;
 }
