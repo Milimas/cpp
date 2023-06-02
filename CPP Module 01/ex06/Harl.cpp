@@ -43,5 +43,5 @@ void Harl::complain( std::string level )
     map["WARNING"] = &Harl::warning;
     map["ERROR"] = &Harl::error;
     
-    (this->*(map[level]))();
+    (this->*map[level])();
 }
