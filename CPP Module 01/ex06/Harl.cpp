@@ -38,10 +38,11 @@ void Harl::complain( std::string level )
 {
     std::map<std::string, FnPtr> map ;
 
-    map["DEBUG"] = &Harl::debug;
-    map["INFO"] = &Harl::info;
-    map["WARNING"] = &Harl::warning;
-    map["ERROR"] = &Harl::error;
+    map["DEBUG"] = &Harl::debug ;
+    map["INFO"] = &Harl::info ;
+    map["WARNING"] = &Harl::warning ;
+    map["ERROR"] = &Harl::error ;
     
-    (this->*map[level])();
+    (this->*map[level])() ;
+    std::cout << std::endl ;
 }
