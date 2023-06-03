@@ -33,9 +33,12 @@ void PhoneBook::add(  )
     std::cout << "Darket Secret: " ;
     std::cin >> darketSecret ;
 
+    std::cout << this->size << std::endl ;
     this->contacts[this->size] = Contact(firstName, lastName, nickname, phoneNumber, darketSecret) ;
-    if (this->size < 8)
+    if (this->size < 7)
+    {
         this->size++ ;
+    }
     std::cout << std::endl << "Contact created successfully." << std::endl << "Press any key to continue..." << std::endl ;
     
     std::system("read") ;
@@ -69,15 +72,17 @@ void PhoneBook::search()
 
     std::string index;
     std::cin >> index ;
-    if (stoi(index) < 0 || stoi(index) > this->size)
+    if (stoi(index) < 0 || stoi(index) > this->size || !this->size)
     {
         std::cout << "Index out of range" << std::endl ;
-        return ;
     }
-    std::cout << "| "  << index ;
-    std::cout << " | " << this->contacts[stoi(index)].getFirstName() ;
-    std::cout << " | " << this->contacts[stoi(index)].getLastName() ;
-    std::cout << " | " << this->contacts[stoi(index)].getNickname()  << " |" << std::endl ;
+    else
+    {
+        std::cout << "| "  << index ;
+        std::cout << " | " << this->contacts[stoi(index)].getFirstName() ;
+        std::cout << " | " << this->contacts[stoi(index)].getLastName() ;
+        std::cout << " | " << this->contacts[stoi(index)].getNickname()  << " |" << std::endl ;
+    }
     std::cout << "Press any key to continue..." << std::endl ;
     
     std::system("read") ;
