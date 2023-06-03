@@ -30,3 +30,13 @@ std::string Contact::getNickname()
 {
     return this->nickname ;
 }
+
+std::string Contact::getPhoneNumber()
+{
+    return this->phoneNumber ;
+}
+
+std::string Contact::getDarketSecret()
+{
+    return this->darketSecret ;
+}
