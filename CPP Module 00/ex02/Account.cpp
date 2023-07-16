@@ -1,6 +1,7 @@
 #include "Account.hpp"
 #include <iostream>
 #include <ctime>
+#include <iomanip>
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
@@ -11,18 +12,22 @@ int	Account::getNbAccounts( void )
 {
     return (Account::_nbAccounts) ;
 }
+
 int	Account::getTotalAmount( void )
 {
     return (Account::_totalAmount) ;
 }
+
 int	Account::getNbDeposits( void )
 {
     return (Account::_totalNbDeposits) ;
 }
+
 int	Account::getNbWithdrawals( void )
 {
     return (Account::_totalNbWithdrawals) ;
 }
+
 void	Account::displayAccountsInfos( void )
 {
     Account::_displayTimestamp() ;
@@ -63,6 +68,15 @@ Account::~Account( void )
 void    Account::_displayTimestamp( void )
 {
     // you need to display time stamp here like this [19920104_091532]
+    std::time_t now ;
+    std::time(&now);
+    std::tm*    tm = std::localtime(&now);
+    std::cout << "[" << tm->tm_year + 1900 ;
+    std::cout << std::setw(2) << std::setfill('0') << tm->tm_mon ;
+    std::cout << std::setw(2) << std::setfill('0') << tm->tm_mday << "_" ;
+    std::cout << std::setw(2) << std::setfill('0') << tm->tm_hour ;
+    std::cout << std::setw(2) << std::setfill('0') << tm->tm_min ;
+    std::cout << std::setw(2) << std::setfill('0') << tm->tm_sec << "] " ;
 }
 
 
