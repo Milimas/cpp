@@ -5,13 +5,10 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class DiamondTrap : public FragTrap, public ScavTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 private:
     std::string name ;
-    int    hitPoint ;
-    int    energyPoint ;
-    int    attackDamage ;
 
 public:
     DiamondTrap( void ) ;

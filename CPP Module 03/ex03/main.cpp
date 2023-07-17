@@ -21,12 +21,15 @@ int main( void )
     // ahri.beRepaired(2) ;
     // ahri.highFivesGuys() ;
     // zac.highFivesGuys() ;
-    std::cout << "Values:" << std::endl ;
-    std::cout << "zac.getName ==> " <<  zac.getName() << std::endl ;
-    std::cout << "zac.getHitPoint ==> " <<  zac.getHitPoint() << std::endl ;
-    std::cout << "zac.getEnergyPoint ==> " <<  zac.getEnergyPoint() << std::endl ;
-    std::cout << "zac.getAttackDamage ==> " <<  zac.getAttackDamage() << std::endl ;
+
+    // std::cout << "Values:" << std::endl ;
+    // std::cout << "zac.getName ==> " <<  zac.getName() << std::endl ;
+    // std::cout << "zac.getHitPoint ==> " <<  zac.getHitPoint() << std::endl ;
+    // std::cout << "zac.getEnergyPoint ==> " <<  zac.getEnergyPoint() << std::endl ;
+    // std::cout << "zac.getAttackDamage ==> " <<  zac.getAttackDamage() << std::endl ;
+
     zac.highFivesGuys() ;
     zac.guardGate() ;
     zac.whoAmI() ;
+    zac.attack("Ahri") ;
 }

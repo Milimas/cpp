@@ -1,30 +1,46 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap( void )
+    : name(""), hitPoint(10), energyPoint(10), attackDamage(10)
 {
-    this->name = "clap trap" ;
-    this->hitPoint = 10 ;
-    this->energyPoint = 10 ;
-    this->attackDamage = 0 ;
-    std::cout << this->name << " Spawned!" << std::endl ;
+    std::cout << "ClapTrap" << " Default constructor!" << std::endl ;
 }
 
 ClapTrap::ClapTrap( std::string name )
+    : name(name), hitPoint(10), energyPoint(10), attackDamage(10)
 {
-    this->name = name ;
-    this->hitPoint = 10 ;
-    this->energyPoint = 10 ;
-    this->attackDamage = 0 ;
-    std::cout << this->name << " Spawned!" << std::endl ;
+    std::cout << this->name << " Name constructor!" << std::endl ;
+}
+
+ClapTrap::ClapTrap( const ClapTrap& other )
+{
+    if (this != &other)
+    {
+        this->name = other.name;
+        this->hitPoint = other.hitPoint;
+        this->energyPoint = other.energyPoint;
+        this->attackDamage = other.attackDamage;
+    }
+    std::cout << this->name << " Copy construtor!" << std::endl ;
+}
+
+ClapTrap&   ClapTrap::operator=( const ClapTrap& other )
+{
+    if (this != &other)
+    {
+        this->name = other.name ;
+        this->hitPoint = other.hitPoint ;
+        this->energyPoint = other.energyPoint;
+        this->attackDamage = other.attackDamage;
+    }
+    std::cout << this->name << " Copy assignment operator!" << std::endl ;
+    return (*this) ;
 }
 
 ClapTrap::ClapTrap( std::string name, int hitPoint, int energyPoint, int attackDamage )
+    : name(name), hitPoint(hitPoint), energyPoint(energyPoint), attackDamage(attackDamage)
 {
-    this->name = name ;
-    this->hitPoint = hitPoint ;
-    this->energyPoint = energyPoint ;
-    this->attackDamage = attackDamage ;
-    std::cout << this->name << " Spawned!" << std::endl ;
+    std::cout << this->name << " Full constructor!" << std::endl ;
 }
 
 void ClapTrap::attack( const std::string& target )
@@ -76,44 +92,4 @@ void ClapTrap::beRepaired( unsigned int amount )
 ClapTrap::~ClapTrap( void )
 {
     std::cout << this->name << " Died!" << std::endl ;
-}
-
-std::string ClapTrap::getName()
-{
-    return (this->name) ;
-}
-
-int ClapTrap::getHitPoint()
-{
-    return (this->hitPoint) ;
-}
-
-int ClapTrap::getEnergyPoint()
-{
-    return (this->energyPoint) ;
-}
-
-int ClapTrap::getAttackDamage()
-{
-    return (this->attackDamage) ;
-}
-
-void ClapTrap::setName( std::string name )
-{
-    this->name = name ;
-}
-
-void ClapTrap::setHitPoint( int amount )
-{
-    this->hitPoint = amount ;
-}
-
-void ClapTrap::setEnergyPoint( int amount )
-{
-    this->energyPoint = amount ;
-}
-
-void ClapTrap::setAttackDamage( int amount )
-{
-    this->attackDamage = amount ;
 }
