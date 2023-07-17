@@ -1,6 +1,7 @@
 #include "PhoneBook.hpp"
 
 int PhoneBook::size = 0;
+int PhoneBook::oldindex = 0;
 
 PhoneBook::PhoneBook(): contacts()
 {
@@ -21,40 +22,58 @@ void PhoneBook::add(  )
     std::system("clear") ;
 
     std::cout << "Add new Contact: " << std::endl ;
+    std::cout << "At Index: " << oldindex << std::endl ;
     std::cout << std::setw(20) << std::setfill('-') << "-" << std::endl ;
     std::cout << std::setfill(' ') ;
 
-    while (firstName.empty() && !std::cin.eof())
+    do
     {
         std::cout << "First Name: " ;
         std::getline(std::cin, firstName) ;
+        if (!isValid(firstName))
+            firstName.clear() ;
     }
+    while (firstName.empty() && !std::cin.eof()) ;
 
-    while (lastName.empty() && !std::cin.eof())
+    do
     {
         std::cout << "Last Name: " ;
-        std::cin >> lastName ;
+        std::getline(std::cin, lastName) ;
+        if (!isValid(lastName))
+            lastName.clear() ;
     }
+    while (lastName.empty() && !std::cin.eof()) ;
 
-    while (nickname.empty() && !std::cin.eof())
+    do
     {
         std::cout << "nickname: " ;
-        std::cin >> nickname ;
+        std::getline(std::cin, nickname) ;
+        if (!isValid(nickname))
+            nickname.clear() ;
     }
+    while (nickname.empty() && !std::cin.eof()) ;
 
-    while (phoneNumber.empty() && !std::cin.eof())
+    do
     {
         std::cout << "Phone Number: " ;
-        std::cin >> phoneNumber ;
+        std::getline(std::cin, phoneNumber) ;
+        if (!isPhoneNumber(phoneNumber))
+            phoneNumber.clear() ;
     }
+    while (phoneNumber.empty() && !std::cin.eof()) ;
 
-    while (darketSecret.empty() && !std::cin.eof())
+    do
     {
         std::cout << "Darket Secret: " ;
-        std::cin >> darketSecret ;
+        std::getline(std::cin, darketSecret) ;
+        if (!isValid(darketSecret))
+            darketSecret.clear() ;
     }
-    this->contacts[this->size] = Contact(firstName, lastName, nickname, phoneNumber, darketSecret) ;
-    if (this->size < 7)
+    while (darketSecret.empty() && !std::cin.eof()) ;
+
+    this->contacts[this->oldindex] = Contact(firstName, lastName, nickname, phoneNumber, darketSecret) ;
+    this->oldindex = (this->oldindex + 1) % 8 ;
+    if (this->size <= 7)
         this->size++ ;
 
     std::cout << std::endl << "Contact created successfully." << std::endl << "Press any key to continue..." << std::endl ;    
@@ -94,27 +113,61 @@ void PhoneBook::search()
     std::cout << "|" << std::setw(44) << std::setfill('-') << "|" << std::endl ;
 
     std::string index;
-    while (index.empty() || std::cin.eof() || index.find_first_not_of("0123456789") != std::string::npos)
+    do
     {
-        std::cout << std::endl << "Index: " ;
+        std::cout << "Index: " ;
         std::getline(std::cin, index) ;
+        if (std::cin.eof())
+            break ;
+        if (!isPhoneNumber(index))
+            std::cout << "Not a valid index" << std::endl ;
+        else if (toIndex(index) < 0 || toIndex(index) >= this->size || !this->size)
+        {
+            if (!index.empty())
+                std::cout << "Index out of range" << std::endl ;
+            index.clear() ;
+        }
     }
+    while (index.empty() || !isPhoneNumber(index));
 
-    if (stoi(index) < 0 || stoi(index) > this->size || !this->size)
-    {
-        std::cout << "Index out of range" << std::endl ;
-    }
-    else
+    if (!std::cin.eof())
     {
         std::system("clear") ;
         std::cout << " Index: "  << index ;
-        std::cout << " First Name: " << this->contacts[stoi(index)].getFirstName() << std::endl ;
-        std::cout << " Last Name: " << this->contacts[stoi(index)].getLastName() << std::endl ;
-        std::cout << " Nickname: " << this->contacts[stoi(index)].getNickname()  << std::endl ;
-        std::cout << " Phone Number: " << this->contacts[stoi(index)].getPhoneNumber()  << std::endl ;
-        std::cout << " Darket Secret " << this->contacts[stoi(index)].getDarketSecret()  << std::endl ;
+        std::cout << " First Name: " << this->contacts[toIndex(index)].getFirstName() << std::endl ;
+        std::cout << " Last Name: " << this->contacts[toIndex(index)].getLastName() << std::endl ;
+        std::cout << " Nickname: " << this->contacts[toIndex(index)].getNickname()  << std::endl ;
+        std::cout << " Phone Number: " << this->contacts[toIndex(index)].getPhoneNumber()  << std::endl ;
+        std::cout << " Darket Secret " << this->contacts[toIndex(index)].getDarketSecret()  << std::endl ;
     }
     
     std::cout << std::endl << "Press any key to continue..." << std::endl ;
     std::system("read") ;
+}
+
+bool PhoneBook::isValid( std::string str )
+{
+    for (int i = 0 ; str[i] ; i++)
+    {
+        if (!isprint(str[i]))
+            return (false) ;
+    }
+    return (true) ;
+}
+
+bool PhoneBook::isPhoneNumber( std::string str )
+{
+    for (int i = 0 ; str[i] ; i++)
+    {
+        if (!isnumber(str[i]))
+            return (false) ;
+    }
+    return (true) ;
+} 
+
+int PhoneBook::toIndex( std::string str )
+{
+    if (str.empty())
+        return (-1) ;
+    return (str[0] - '0') ;
 }

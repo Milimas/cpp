@@ -8,26 +8,21 @@ int main()
 {
     PhoneBook phoneBook ;
 
-    while (1)
+    while (!std::cin.eof())
     {
         std::system("clear") ;
         std::string choice ;
-        std::cout << "PhoneBook" << std::endl ;
-        std::cout << "Commands:" << std::endl ;
+        std::cout << "----------- PhoneBook -----------" << std::endl ;
         std::cout << "ADD" << std::endl ;
         std::cout << "SEARCH" << std::endl ;
         std::cout << "EXIT" << std::endl ;
 
-        if (std::cin.eof())
-            return (0);
-        std::cout << "$ " ;
-        std::getline(std::cin, choice) ;
-        while (choice.empty() && !std::cin.eof())
+        do
         {
             std::cout << "$ " ;
             std::getline(std::cin, choice) ;
         }
-
+        while (choice.empty() && !std::cin.eof()) ;
         if (choice == "ADD")
             phoneBook.add() ;
         else if (choice == "SEARCH")
@@ -40,6 +35,8 @@ int main()
             std::cout << "Press any key to continue..." << std::endl ;
             std::system("read") ;
         }
+        if (std::cin.eof())
+            std::cout << "Exit" << std::endl ;
     }
     return (0) ;
 }
