@@ -117,6 +117,8 @@ void PhoneBook::search()
     {
         std::cout << "Index: " ;
         std::getline(std::cin, index) ;
+        if (index == "EXIT")
+            return ;
         if (std::cin.eof())
             break ;
         if (!isPhoneNumber(index))
