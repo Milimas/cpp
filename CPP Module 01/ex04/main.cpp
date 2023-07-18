@@ -9,6 +9,8 @@ int    usage(void)
 
 void    replaceAll(std::string &line, std::string &str, std::string &replace)
 {
+    if (str.empty())
+        return ;
     for (size_t pos = 0; ; pos += replace.length())
     {
         pos = line.find(str, pos) ;
