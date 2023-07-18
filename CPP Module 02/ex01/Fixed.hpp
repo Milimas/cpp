@@ -13,9 +13,8 @@ public:
     Fixed( void ) ;
     Fixed( const int value ) ;
     Fixed( const float value ) ;
-    Fixed( Fixed &fixed ) ;
-    Fixed( Fixed const &fixed ) ;
-    Fixed& operator=( Fixed other ) ;
+    Fixed( const Fixed &fixed ) ;
+    Fixed& operator=( const Fixed& other ) ;
     ~Fixed() ;
     int getRawBits( void ) const ;
     void setRawBits( int const raw ) ;

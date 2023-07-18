@@ -14,21 +14,20 @@ public:
     Fixed( void ) ;
     Fixed( const int value ) ;
     Fixed( const float value ) ;
-    Fixed( Fixed &fixed ) ;
-    Fixed( Fixed const &fixed ) ;
-    Fixed& operator=( Fixed other ) ;
+    Fixed( const Fixed& fixed ) ;
+    Fixed& operator=( const Fixed& other ) ;
 
-    bool operator>( Fixed other ) ;
-    bool operator<( Fixed other ) ;
-    bool operator>=( Fixed other ) ;
-    bool operator<=( Fixed other ) ;
-    bool operator==( Fixed other ) ;
-    bool operator!=( Fixed other ) ;
+    bool operator>( const Fixed& other ) ;
+    bool operator<( const Fixed& other ) ;
+    bool operator>=( const Fixed& other ) ;
+    bool operator<=( const Fixed& other ) ;
+    bool operator==( const Fixed& other ) ;
+    bool operator!=( const Fixed& other ) ;
 
-    Fixed operator+( Fixed other ) ;
-    Fixed operator-( Fixed other ) ;
-    Fixed operator*( Fixed other ) ;
-    Fixed operator/( Fixed other ) ;
+    Fixed operator+( const Fixed& other ) ;
+    Fixed operator-( const Fixed& other ) ;
+    Fixed operator*( const Fixed& other ) ;
+    Fixed operator/( const Fixed& other ) ;
 
     Fixed operator++( int ) ;
     Fixed operator--( int ) ;

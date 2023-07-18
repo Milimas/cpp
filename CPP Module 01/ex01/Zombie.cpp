@@ -1,14 +1,12 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie()
+Zombie::Zombie(): name("Zombie Object")
 {
-    this->name = "Zombie Object" ;
     std::cout << this->name << ": Born" << std::endl ;
 }
 
-Zombie::Zombie( std::string name )
+Zombie::Zombie( std::string name ): name(name)
 {
-    this->name = name ;
     std::cout << this->name << ": Born" << std::endl ;
 }
 

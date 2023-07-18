@@ -1,33 +1,23 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed(void)
+Fixed::Fixed(void): value(0)
 {
     std::cout << "Default constructor called" << std::endl ;
-    this->value = 0 ;
 }
 
-Fixed::Fixed(Fixed &fixed)
+Fixed::Fixed( const Fixed &fixed): value(fixed.value)
 {
     std::cout << "Copy constructor called" << std::endl ;
-    this->value = fixed.value ;
 }
 
-Fixed::Fixed(Fixed const &fixed)
+Fixed::Fixed( const int value ): value(roundf(value * (1 << Fixed::fractional_bits)))
 {
     std::cout << "Copy constructor called" << std::endl ;
-    this->value = fixed.value ;
 }
 
-Fixed::Fixed( const int value )
+Fixed::Fixed( const float value ): value(roundf(value * (1 << Fixed::fractional_bits)))
 {
     std::cout << "Copy constructor called" << std::endl ;
-    this->value = roundf(value * (1 << Fixed::fractional_bits)) ;
-}
-
-Fixed::Fixed( const float value )
-{
-    std::cout << "Copy constructor called" << std::endl ;
-    this->value = roundf(value * (1 << Fixed::fractional_bits)) ;
 }
 
 Fixed::~Fixed()
@@ -35,7 +25,7 @@ Fixed::~Fixed()
     std::cout << "Destructor called" << std::endl ;
 }
 
-Fixed& Fixed::operator=(Fixed other)
+Fixed& Fixed::operator=( const Fixed& other )
 {
     std::cout << "Copy assignment operator called" << std::endl ;
     if (this != &other)
@@ -44,13 +34,6 @@ Fixed& Fixed::operator=(Fixed other)
     }
     return (*this) ;
 }
-
-std::ostream& operator<<(std::ostream& os, const Fixed& obj)
-{
-    os << obj.toFloat();
-    return os;
-}
-
 
 int Fixed::getRawBits( void ) const
 {
@@ -72,4 +55,10 @@ float Fixed::toFloat( void ) const
 int Fixed::toInt( void ) const
 {
     return ((this->value) / (1 << Fixed::fractional_bits));
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& obj)
+{
+    os << obj.toFloat();
+    return os;
 }

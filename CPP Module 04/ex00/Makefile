@@ -1,12 +1,15 @@
-CC = c++
+CC = g++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC =	main.cpp
+SRC =	main.cpp	\
+		Animal.cpp	\
+		Cat.cpp		\
+		Dog.cpp		\
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = Sed
+NAME = Polymorphism
 
 all: $(NAME)
 

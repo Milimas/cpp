@@ -14,7 +14,24 @@ int main( void )
 
     std::cout << b << std::endl;
 
-    std::cout << "-----" << std::endl ;
+    a = b ;
+    std::cout << "-----"    << std::endl ;
+    std::cout << ((a < b) ? "true " : "false ") << "a < b: " << std::endl ;
+    std::cout << ((a <= b) ? "true " : "false ") << "a <= b: " << std::endl ;
+    std::cout << ((a > b) ? "true " : "false ") << "a > b: " << std::endl ;
+    std::cout << ((a >= b) ? "true " : "false ") << "a >= b: " << std::endl ;
+    std::cout << ((a == b) ? "true " : "false ") << "a == b: " << std::endl ;
+    std::cout << ((a != b) ? "true " : "false ") << "a != b: " << std::endl ;
+    
+    std::cout << "-----"    << std::endl ;
+     std::cout << ((a < a) ? "true " : "false ") << "a < a: " << std::endl ;
+    std::cout << ((a <= a) ? "true " : "false ") << "a <= a: " << std::endl ;
+    std::cout << ((a > a) ? "true " : "false ") << "a > a: " << std::endl ;
+    std::cout << ((a >= a) ? "true " : "false ") << "a >= a: " << std::endl ;
+    std::cout << ((a == a) ? "true " : "false ") << "a == a: " << std::endl ;
+    std::cout << ((a != a) ? "true " : "false ") << "a != a: " << std::endl ;
+
+    std::cout << "-----"    << std::endl ;
     std::cout << Fixed::min( a, b ) << std::endl;
     std::cout << Fixed::max( a, b ) << std::endl;
     

@@ -1,9 +1,8 @@
 #include "HumanB.hpp"
 #include "Weapon.hpp"
 
-HumanB::HumanB( std::string name ): weapon(NULL)
+HumanB::HumanB( std::string name ): name(name), weapon(NULL)
 {
-    this->name = name ;
     std::cout << this->name << ": born" << std::endl ;
 }
 
