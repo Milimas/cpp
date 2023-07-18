@@ -1,25 +1,22 @@
-CC = g++
+SUBDIRS = $(wildcard */*)
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+all:
+	for dir in $(SUBDIRS); do \
+		echo $$dir; \
+        $(MAKE) -C $$dir/.; \
+    done
 
-SRC =	main.cpp		\
-		Zombie.cpp		\
-		zombieHorde.cpp	\
+clean: $(SUBDIRS)
+	for dir in $(SUBDIRS); do \
+		echo $$dir; \
+        $(MAKE) clean -C $$dir; \
+    done
 
-OBJ = $(SRC:.cpp=.o)
-
-NAME = Zombie
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
-
-clean:
-	rm -f $(OBJ)
-
-fclean: clean
-	rm -f $(NAME)
+fclean:
+	for dir in $(SUBDIRS); do \
+		echo $$dir; \
+        $(MAKE) fclean -C $$dir; \
+    done
 
 re: fclean all
 
