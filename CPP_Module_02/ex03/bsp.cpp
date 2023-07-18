@@ -2,13 +2,13 @@
 
 Fixed   area( Point const a, Point const b, Point const c )
 {
-    Fixed ax = a.getX().toFloat() ;
-    Fixed bx = b.getX().toFloat() ;
-    Fixed cx = c.getX().toFloat() ;
-    Fixed ay = a.getY().toFloat() ;
-    Fixed by = b.getY().toFloat() ;
-    Fixed cy = c.getY().toFloat() ;
-    Fixed area = (ax*(by - cy) + bx*(cy-ay)+ cx*(ay-by)) / Fixed(2.0f) ;
+    Fixed ax = a.getX() ;
+    Fixed bx = b.getX() ;
+    Fixed cx = c.getX() ;
+    Fixed ay = a.getY() ;
+    Fixed by = b.getY() ;
+    Fixed cy = c.getY() ;
+    Fixed area = (ax*(by - cy) + bx*(cy-ay)+ cx*(ay-by)) / Fixed(2) ;
     if (area < 0)
         area = area * -1 ;
     return (area) ;

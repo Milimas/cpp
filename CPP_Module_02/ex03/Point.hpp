@@ -19,6 +19,7 @@ public:
 
     Point( int x, int y ) ;
     Point( float x, float y ) ;
+    
     Fixed getX( void ) const;
     Fixed getY( void ) const;
 };
