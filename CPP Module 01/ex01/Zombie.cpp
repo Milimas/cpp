@@ -3,18 +3,18 @@
 Zombie::Zombie()
 {
     this->name = "Zombie Object" ;
-    std::cout << this->name << ": born" << std::endl ;
+    std::cout << this->name << ": Born" << std::endl ;
 }
 
 Zombie::Zombie( std::string name )
 {
     this->name = name ;
-    std::cout << this->name << ": born" << std::endl ;
+    std::cout << this->name << ": Born" << std::endl ;
 }
 
 Zombie::~Zombie()
 {
-    std::cout << this->name << ": died" << std::endl ;
+    std::cout << this->name << ": Died" << std::endl ;
 }
 
 void Zombie::announce()
@@ -24,6 +24,6 @@ void Zombie::announce()
 
 void Zombie::setName( std::string name )
 {
-    std::cout << this->name << ": name changed to " << name << std::endl ;
+    std::cout << this->name << ": Name changed to " << name << std::endl ;
     this->name = name ;
 }

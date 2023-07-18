@@ -2,7 +2,6 @@
 
 enum code
 {
-    NONE,
     DEBUG,
     INFO,
     WARNING,
@@ -12,19 +11,18 @@ enum code
 int main(int argc, char **argv)
 {
     Harl h;
-    std::map<std::string, code> level;
-    level["DEBUG"] = DEBUG;
-    level["INFO"]= INFO;
-    level["WARNING"]= WARNING;
-    level["ERROR"]= ERROR;
+    std::string lvls[4] = {"DEBUG","INFO","WARNING","ERROR"};
+    int i;
 
     if (argc != 2)
         return (1);
-    switch (level[argv[1]])
+    for (i = 0; i < 4; i++)
     {
-        case NONE :
-            std::cout << "[ Probably complaining about insignificant problems ]" << std::endl ;
+        if (lvls[i] == argv[1])
             break ;
+    }
+    switch (i)
+    {
         case DEBUG :
             h.complain("DEBUG") ;
         case INFO :

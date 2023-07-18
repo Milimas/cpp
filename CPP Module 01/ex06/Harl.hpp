@@ -3,7 +3,7 @@
 #define HARL_HPP
 
 #include <iostream>
-#include <map>
+#include <cstring>
 
 class Harl
 {

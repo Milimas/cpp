@@ -40,7 +40,10 @@ int main(int argc, char **argv)
     {
         filereplace.open(filename + ".replace") ;
         if ( !filereplace.is_open() )
+        {
+            std::cout << "Couldn't open file " << filename << std::endl ;
             return 1 ;
+        }
         while ( getline(file, line) )
         {
             replaceAll(line, string1, string2) ;
