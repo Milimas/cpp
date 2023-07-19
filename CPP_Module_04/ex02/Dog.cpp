@@ -5,11 +5,6 @@ Dog::Dog( void ): Animal("Dog"), brain(new Brain())
     std::cout << "Dog::" << this->type << " Created" << std::endl ;
 }
 
-Dog::Dog( const int i ): Animal("Dog_" + std::to_string(i)), brain(new Brain())
-{
-    std::cout << "Dog::" << this->type << " Created" << std::endl ;
-}
-
 Dog::Dog( const Dog& other ): Animal(other.type), brain(other.brain)
 {
     std::cout << "Dog::" << this->type << " Called Copy Constructor" << std::endl ;

@@ -8,10 +8,11 @@ SRC =	main.cpp		\
 		Dog.cpp			\
 		WrongCat.cpp	\
 		WrongAnimal.cpp	\
+		Brain.cpp		\
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = Polymorphism
+NAME = WorldOnFire
 
 all: $(NAME)
 

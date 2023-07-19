@@ -8,7 +8,7 @@ enum code
     ERROR,
 };
 
-int main(int argc, char **argv)
+int main( int argc, char **argv )
 {
     Harl h;
     std::string lvls[4] = {"DEBUG","INFO","WARNING","ERROR"};

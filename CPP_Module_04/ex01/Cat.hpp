@@ -9,10 +9,11 @@ class Cat: public Animal
 private:
     Brain* brain ;
 public:
-    Cat() ;
-    Cat( Cat& other ) ;
-    ~Cat() ;
-    Cat& operator=( Cat& other) ;
+    Cat( void ) ;
+    Cat( const int i ) ;
+    Cat( const Cat& other ) ;
+    ~Cat( void ) ;
+    Cat& operator=( const Cat& other) ;
 
     void makeSound( void ) const ;
 };

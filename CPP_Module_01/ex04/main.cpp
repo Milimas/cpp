@@ -1,13 +1,13 @@
 #include <iostream>
 #include <fstream>
 
-int    usage(void)
+int    usage( void )
 {
     std::cout << "usage: sed <filename> <string1> <string2>" << std::endl;
     return (EXIT_FAILURE);
 }
 
-void    replaceAll(std::string &line, std::string &str, std::string &replace)
+void    replaceAll( std::string &line, std::string &str, std::string &replace )
 {
     if (str.empty())
         return ;
@@ -21,7 +21,7 @@ void    replaceAll(std::string &line, std::string &str, std::string &replace)
     }
 }
 
-int main(int argc, char **argv)
+int main( int argc, char **argv )
 {
     std::string filename ;
     std::string string1 ;
@@ -32,9 +32,11 @@ int main(int argc, char **argv)
 
     if (argc != 4)
         return (usage()) ;
+
     filename = argv[1] ;
     string1 = argv[2] ;
     string2 = argv[3] ;
+
     file.open(filename) ; 
     if (file.is_open())
     {
@@ -54,5 +56,6 @@ int main(int argc, char **argv)
     }
     else
         std::cout << "Couldn't open file " << filename << std::endl ;
+
     return 0 ;
 }

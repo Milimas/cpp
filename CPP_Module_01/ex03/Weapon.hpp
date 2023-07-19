@@ -9,11 +9,12 @@ class Weapon
 private:
     std::string type ;
 public:
-    Weapon( std::string type ) ;
-    Weapon() ;
-    ~Weapon() ;
-    void setType( std::string type ) ;
-    std::string getType() ;
+    Weapon( void ) ;
+    Weapon( const std::string type ) ;
+    ~Weapon( void ) ;
+
+    void setType( const std::string type ) ;
+    std::string getType( void ) const ;
 };
 
 #endif

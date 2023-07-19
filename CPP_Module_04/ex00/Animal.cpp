@@ -1,38 +1,38 @@
 #include "Animal.hpp"
 
-Animal::Animal( void )
+Animal::Animal( void ): type("Animal")
 {
-    this->type = "Animal" ;
-    std::cout << this->type << " Created" << std::endl ;
+    std::cout << "Animal::" << this->type << " Created" << std::endl ;
 }
 
-Animal::Animal( Animal& other )
+Animal::Animal( const std::string name ): type(name)
 {
-    if (this != &other)
-    {
-        this->type = other.type ;
-    }
-    std::cout << this->type << " Called Copy Constructor" << std::endl ;
+    std::cout << "Animal::" << this->type << " Created" << std::endl ;
+}
+
+Animal::Animal( const Animal& other ): type(other.type)
+{
+    std::cout << "Animal::" << this->type << " Called Copy Constructor" << std::endl ;
 }
 
 Animal::~Animal( void )
 {
-    std::cout << this->type << " Called Destructor" << std::endl ;
+    std::cout << "Animal::" << this->type << " Called Destructor" << std::endl ;
 }
 
-Animal& Animal::operator=( Animal& other)
+Animal& Animal::operator=( const Animal& other)
 {
     if (this != &other)
     {
         this->type = other.type ;
     }
-    std::cout << this->type << " Called Copy Assignment operator" << std::endl ;
+    std::cout << "Animal::" << this->type << " Called Copy Assignment operator" << std::endl ;
     return (*this) ;
 }
 
 void Animal::makeSound( void ) const
 {
-    std::cout << this->type << " Sound!!" << std::endl ;
+    std::cout << "Animal::" << this->type << " Sound!!" << std::endl ;
 }
 
 std::string Animal::getType( void ) const

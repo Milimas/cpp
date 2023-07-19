@@ -6,6 +6,7 @@
 
 int main2()
 {
+    // const Animal* animal = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
 
@@ -16,15 +17,20 @@ int main2()
     delete i;
 
 
-    int numberOfAnimals = 100;
+    int numberOfAnimals = 4;
     Animal** animals = new Animal*[numberOfAnimals] ;
 
     for (int inx = 0; inx < numberOfAnimals/2; inx++)
     {
-        animals[inx] = new Cat(inx + 1) ;
-        animals[numberOfAnimals/2 + inx] = new Dog(numberOfAnimals/2 + inx + 1) ;
+        animals[inx] = new Cat() ;
+        animals[numberOfAnimals/2 + inx] = new Dog() ;
     }
     
+    for (int inx = 0; inx < numberOfAnimals; inx++)
+    {
+        animals[inx]->makeSound() ;
+    }
+
     for (int inx = 0; inx < numberOfAnimals; inx++)
     {
         delete animals[inx] ;
