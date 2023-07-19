@@ -16,6 +16,7 @@ public:
     Fixed( const float value ) ;
     Fixed( const Fixed& fixed ) ;
     Fixed& operator=( const Fixed& other ) ;
+    ~Fixed() ;
 
     bool operator>( const Fixed& other ) ;
     bool operator<( const Fixed& other ) ;
@@ -34,8 +35,6 @@ public:
     Fixed& operator++( void ) ;
     Fixed& operator--( void ) ;
 
-    
-    ~Fixed() ;
     int getRawBits( void ) const ;
     void setRawBits( int const raw ) ;
     float toFloat( void ) const ;

@@ -27,15 +27,13 @@ int main2()
     }
     
     for (int inx = 0; inx < numberOfAnimals; inx++)
-    {
         animals[inx]->makeSound() ;
-    }
 
     for (int inx = 0; inx < numberOfAnimals; inx++)
-    {
         delete animals[inx] ;
-    }
+
     delete [] animals ;
+    
     return (0) ;
 }
 
