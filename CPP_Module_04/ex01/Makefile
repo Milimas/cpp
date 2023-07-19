@@ -1,26 +1,30 @@
-# CC = g++
+CC = g++
 
-# CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-# SRC =	main.cpp		\
-# 		Zombie.cpp		\
-# 		zombieHorde.cpp	\
+SRC =	main.cpp		\
+		Animal.cpp		\
+		Cat.cpp			\
+		Dog.cpp			\
+		WrongCat.cpp	\
+		WrongAnimal.cpp	\
+		Brain.cpp		\
 
-# OBJ = $(SRC:.cpp=.o)
+OBJ = $(SRC:.cpp=.o)
 
-# NAME = Zombie
+NAME = WorldOnFire
 
-# all: $(NAME)
+all: $(NAME)
 
-# $(NAME): $(OBJ)
-# 	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
-# clean:
-# 	rm -f $(OBJ)
+clean:
+	rm -f $(OBJ)
 
-# fclean: clean
-# 	rm -f $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-# re: fclean all
+re: fclean all
 
-# .PHONY: all clean fclean re
+.PHONY: all clean fclean re
