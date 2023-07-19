@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 
-int    usage( void )
+int    usage( std::string name )
 {
-    std::cout << "usage: sed <filename> <string1> <string2>" << std::endl;
+    std::cout << "usage: " + name + " <filename> <string1> <string2>" << std::endl;
     return (EXIT_FAILURE);
 }
 
@@ -11,7 +11,7 @@ void    replaceAll( std::string &line, std::string &str, std::string &replace )
 {
     if (str.empty())
         return ;
-    for (size_t pos = 0; ; pos += replace.length())
+    for (size_t pos = 0 ; ; pos += replace.length())
     {
         pos = line.find(str, pos) ;
         if (pos == std::string::npos)
@@ -31,7 +31,7 @@ int main( int argc, char **argv )
     std::string line ;
 
     if (argc != 4)
-        return (usage()) ;
+        return (usage(argv[0])) ;
 
     filename = argv[1] ;
     string1 = argv[2] ;
@@ -49,7 +49,9 @@ int main( int argc, char **argv )
         while ( getline(file, line) )
         {
             replaceAll(line, string1, string2) ;
-            filereplace << line << std::endl ;
+            filereplace << line ;
+            if (!file.eof())
+                filereplace << std::endl ;
         }
         file.close() ;
         filereplace.close() ;

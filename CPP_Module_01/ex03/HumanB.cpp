@@ -21,7 +21,7 @@ HumanB::~HumanB( void )
     std::cout << this->name << ": died" << std::endl ;
 }
 
-void HumanB::attack( void )
+void HumanB::attack( void ) const
 {
     if (this->weapon)
         std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl ;

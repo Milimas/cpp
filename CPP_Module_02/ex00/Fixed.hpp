@@ -10,11 +10,11 @@ private:
     static const int    fraction = 8 ;
 public:
     Fixed( void ) ;
-    Fixed( Fixed &fixed ) ;
+    Fixed( const Fixed &fixed ) ;
     Fixed& operator=( const Fixed& other ) ;
-    ~Fixed() ;
+    ~Fixed( void ) ;
     int getRawBits( void ) const ;
-    void setRawBits( int const raw ) ;
+    void setRawBits( const int raw ) ;
 };
 
 #endif

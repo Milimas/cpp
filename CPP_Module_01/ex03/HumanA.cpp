@@ -11,7 +11,7 @@ HumanA::~HumanA( void )
     std::cout << this->name << ": died" << std::endl ;
 }
 
-void HumanA::attack( void )
+void HumanA::attack( void ) const
 {
     std::cout << this->name << " attacks with their " << this->weapon.getType() << std::endl ;
 }

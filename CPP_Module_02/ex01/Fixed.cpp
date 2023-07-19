@@ -1,26 +1,26 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed(void): value(0)
+Fixed::Fixed( void ): value(0)
 {
     std::cout << "Default constructor called" << std::endl ;
 }
 
-Fixed::Fixed( const Fixed &fixed): value(fixed.value)
+Fixed::Fixed( const Fixed &fixed ): value(fixed.value)
 {
     std::cout << "Copy constructor called" << std::endl ;
 }
 
 Fixed::Fixed( const int value ): value(roundf(value * (1 << Fixed::fractional_bits)))
 {
-    std::cout << "Copy constructor called" << std::endl ;
+    std::cout << "int Constructor" << std::endl ;
 }
 
 Fixed::Fixed( const float value ): value(roundf(value * (1 << Fixed::fractional_bits)))
 {
-    std::cout << "Copy constructor called" << std::endl ;
+    std::cout << "float Constructor" << std::endl ;
 }
 
-Fixed::~Fixed()
+Fixed::~Fixed( void )
 {
     std::cout << "Destructor called" << std::endl ;
 }
@@ -41,7 +41,7 @@ int Fixed::getRawBits( void ) const
     return (this->value) ;
 }
 
-void Fixed::setRawBits( int const raw )
+void Fixed::setRawBits( const int raw )
 {
     std::cout << "setRawBits member function called" << std::endl ;
     this->value = roundf(raw * (1 << Fixed::fractional_bits)) ;
@@ -57,7 +57,7 @@ int Fixed::toInt( void ) const
     return ((this->value) / (1 << Fixed::fractional_bits));
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& obj)
+std::ostream& operator<<( std::ostream& os, const Fixed& obj )
 {
     os << obj.toFloat();
     return os;

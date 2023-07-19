@@ -10,10 +10,10 @@ private:
     std::string name ;
 public:
     Zombie( void ) ;
-    Zombie( std::string name ) ;
+    Zombie( const std::string name ) ;
     ~Zombie( void ) ;
 
-    void announce( void ) ;
+    void announce( void ) const ;
 };
 
 #endif

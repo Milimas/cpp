@@ -14,7 +14,7 @@ public:
     HumanA( const std::string name, Weapon& weapon ) ;
     ~HumanA( void ) ;
 
-    void attack( void ) ;
+    void attack( void ) const ;
 };
 
 #endif
