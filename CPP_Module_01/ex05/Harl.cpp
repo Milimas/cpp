@@ -36,17 +36,17 @@ void Harl::error( void ) const
 
 void Harl::complain( std::string level ) const
 {
-    std::string lvls[5] = {"", "DEBUG","INFO","WARNING","ERROR"};
-    int i = -1;
-    for (i = 0; i < 5 && lvls[i] != level; i++) ;
+    FnPtr map[4];
+    std::string lvls[4] = {"DEBUG","INFO","WARNING","ERROR"};
 
-    FnPtr map[5];
+    map[0] = &Harl::debug;
+    map[1] = &Harl::info;
+    map[2] = &Harl::warning;
+    map[3] = &Harl::error;
 
-    map[0] = &Harl::error ;
-    map[1] = &Harl::debug ;
-    map[2] = &Harl::info ;
-    map[3] = &Harl::warning ;
-    map[4] = &Harl::error ;
-
-    (this->*(map[i]))();
+    for (int i = 0; i < 4; i++)
+    {
+        if (lvls[i] == level)
+            (this->*(map[i]))();
+    }
 }
