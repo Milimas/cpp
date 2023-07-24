@@ -16,7 +16,7 @@ public:
     Fixed( const float value ) ;
     Fixed( const Fixed& fixed ) ;
     Fixed& operator=( const Fixed& other ) ;
-    ~Fixed() ;
+    ~Fixed( void ) ;
 
     bool operator>( const Fixed& other ) ;
     bool operator<( const Fixed& other ) ;

@@ -36,6 +36,3 @@ void Fixed::setRawBits( const int raw )
     std::cout << "setRawBits member function called" << std::endl ;
     this->value = raw ;
 }
-
-// s = m * 2 ^ e
-// number = (sign ? -1:1) * 2^(exponent) * 1.(mantissa bits)
