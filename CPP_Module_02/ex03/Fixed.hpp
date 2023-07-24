@@ -3,12 +3,15 @@
 
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
+#include <bitset>
+#include <sstream>
 
 class Fixed
 {
 private:
-    int                 value ;
-    static const int    fractional_bits = 8 ;
+    uint                 value ;
+    static const int    fractional_bits = 2 ;
 
 public:
     Fixed( void ) ;
@@ -30,12 +33,14 @@ public:
     Fixed operator/( const Fixed& other ) ;
     Fixed operator()( const Fixed& other ) ;
 
+    Fixed operator*( const int& other ) const ;
+    Fixed operator/( const int& other ) ;
+
     Fixed operator++( int ) ;
     Fixed operator--( int ) ;
     Fixed& operator++( void ) ;
     Fixed& operator--( void ) ;
 
-    
     ~Fixed() ;
     int getRawBits( void ) const ;
     void setRawBits( int const raw ) ;
@@ -46,6 +51,7 @@ public:
     static const Fixed& min( const Fixed& first, const Fixed& second ) ;
     static Fixed& max( Fixed& first, Fixed& second ) ;
     static const Fixed& max( const Fixed& first, const Fixed& second ) ;
+    static const Fixed fAbs( const Fixed& number ) ;
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj);

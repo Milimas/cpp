@@ -8,10 +8,8 @@ Fixed   area( Point const a, Point const b, Point const c )
     Fixed ay = a.getY() ;
     Fixed by = b.getY() ;
     Fixed cy = c.getY() ;
-    Fixed area = (ax*(by - cy) + bx*(cy-ay)+ cx*(ay-by)) / Fixed(2) ;
-    if (area < 0)
-        area = area * -1 ;
-    return (area) ;
+    Fixed area = (ax*(by - cy) + bx*(cy-ay)+ cx*(ay-by)) / 2 ;
+    return (Fixed::fAbs(area)) ;
 }
 
 bool bsp( Point const a, Point const b, Point const c, Point const point)
