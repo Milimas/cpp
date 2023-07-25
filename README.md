@@ -31,10 +31,35 @@ To store the value of a real number in a fixed-point number we simply shift the 
 int     fpValue ;
 float   realNumber  = 12.75f ;
 
-fpValue             = realNumber << fractionalBits
+// fpValue          = realNumber << fractionalBits
+fpValue             = realNumber * (1 << fractionalBits) ;
 // fpValue          = 12.75 << 8
 // fpValue          = 12.75 * 256 = 3264
 ```
+
+To convert a fixed-point number to floating number you simply shift the `fpValue` to the right by the `fractionalBits` and you get the real number value back:
+
+```c++
+int     fpValue     = 3264;
+float   realNumber ;
+
+// realNumber       = fpValue >> fractionalBits
+realNumber          = fpValue / (1 << fractionalBits) ;
+// fpValue          = 3264 >> 8
+// fpValue          = 3264 / 256 = 12.75000000000000000000
+```
+
+### Limits
+
+The maximum fixed-point number we can have with 8 fractional bits and a signed integer value is  `8388607.996` and the minimum is `-8388608` and they are represented as follow:
+
+| fixed point   | integer       | binary                               |
+| :-:           | :-:           | :-:                                  |
+| -8388608      | -2147483648   | 10000000 00000000 00000000 00000000  |
+| 8388607.996   | 2147483647    | 01111111 11111111 11111111 11111111  |
+| 0             | 0             | 00000000 00000000 00000000 00000000  |
+| 1             | 256           | 00000000 00000000 00000001 00000000  |
+| -1            | -256          | 11111111 11111111 11111111 00000000  |
 
 ### Binary representaion:
 
@@ -79,7 +104,16 @@ x = -0.00390625
 
 ### day02
 
+#### Floating point
+[Understanding and Using Floating Point Numbers](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point.html)
+
+[Floating point number representation](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html)
+
+[Printing floating point numbers](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_printing.html)
+
 [Understanding and implementing fixed point numbers](http://www.sunshine2k.de/articles/coding/fp/sunfp.html#:~:text=Fixed%20points%20numbers%20are%20represented,part%20is%20always%20the%20same.)
+
+#### Fixed point
 
 [Fixed-point arithmetic](https://en.wikipedia.org/wiki/Fixed-point_arithmetic)
 
@@ -89,12 +123,11 @@ x = -0.00390625
 
 [How can we calculate 1/3 by using fixed-point arithmetic?](https://stackoverflow.com/questions/46104132/how-can-we-calculate-1-3-by-using-fixed-point-arithmetic)
 
-[Understanding and Using Floating Point Numbers](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point.html)
-
-[Floating point number representation](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html)
-
-[Printing floating point numbers](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_printing.html)
 
 [float to binary convertor](https://www.binaryconvert.com/result_float.html?decimal=045049)
 
 [signed int to binary convertor](https://www.binaryconvert.com/convert_signed_int.html)
+
+[Fixed Point Representation](https://www.geeksforgeeks.org/fixed-point-representation/)
+
+[Fixed-Point Arithmetic: An Introduction](http://www.digitalsignallabs.com/fp.pdf)
