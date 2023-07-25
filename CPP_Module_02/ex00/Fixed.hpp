@@ -7,7 +7,7 @@ class Fixed
 {
 private:
     int                 value ;
-    static const int    fraction = 8 ;
+    static const int    fractionalBits ;
 public:
     Fixed( void ) ;
     Fixed( const Fixed &fixed ) ;
