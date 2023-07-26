@@ -1,21 +1,49 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap( void ) : ClapTrap( "FragTrap", 100, 100, 30 )
+FragTrap::FragTrap( void ) : ClapTrap("FragTrap")
 {
-    std::cout << this->getName() << "-Derived Spawned!" << std::endl ;
+    this->hitPoint = 100 ;
+    this->energyPoint = 100 ;
+    this->attackDamage = 30 ;
+    std::cout << getName() << "-Derived Spawned!" << std::endl ;
 }
 
-FragTrap::FragTrap( std::string name ) : ClapTrap( name, 100, 100, 30 )
+FragTrap::FragTrap( const FragTrap& other )
 {
-    std::cout << this->getName() << "-Derived Spawned!" << std::endl ;
+    std::cout << getName() << " Created from " << other.name << "!" << std::endl ;
+    this->name = other.name ;
+    this->hitPoint = other.hitPoint ;
+    this->energyPoint = other.energyPoint ;
+    this->attackDamage = other.attackDamage ;
+}
+
+FragTrap& FragTrap::operator=( const FragTrap& other )
+{
+    if (this != &other)
+    {
+        std::cout << getName() << " Becomes " << other.name << "!" << std::endl ;
+        this->name = other.name ;
+        this->hitPoint = other.hitPoint ;
+        this->energyPoint = other.energyPoint ;
+        this->attackDamage = other.attackDamage ;
+    }
+    return (*this) ;
+}
+
+FragTrap::FragTrap( std::string name ) : ClapTrap( name )
+{
+    this->hitPoint = 100 ;
+    this->energyPoint = 100 ;
+    this->attackDamage = 30 ;
+    std::cout << getName() << "-Derived Spawned!" << std::endl ;
 }
 
 FragTrap::~FragTrap( void )
 {
-    std::cout << this->getName() << "-Derived Died!" << std::endl ;
+    std::cout << getName() << "-Derived Died!" << std::endl ;
 }
 
 void FragTrap::highFivesGuys()
 {
-    std::cout << this->getName() << " request high fives" << std::endl ;
+    std::cout << getName() << " request high fives" << std::endl ;
 }
