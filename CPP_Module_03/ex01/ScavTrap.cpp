@@ -1,21 +1,43 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void ) : ClapTrap( "ScavTrap", 100, 50, 20 )
+ScavTrap::ScavTrap( void )
 {
-    std::cout << this->getName() << "-Derived Spawned!" << std::endl ;
+    this->name = "ScavTrap" ;
+    this->hitPoint = 100 ;
+    this->energyPoint = 50 ;
+    this->attackDamage = 20 ;
+    std::cout << getName() << "-Derived Spawned!" << std::endl ;
 }
 
-ScavTrap::ScavTrap( std::string name ) : ClapTrap( name, 100, 50, 20 )
+ScavTrap::ScavTrap( const ScavTrap& other )
 {
-    std::cout << this->getName() << "-Derived Spawned!" << std::endl ;
+    *this = other ;
+}
+
+ScavTrap& ScavTrap::operator=( const ScavTrap& other )
+{
+    if (this != &other)
+    {
+        std::cout << getName() << " Becomes " << other.name << "!" << std::endl ;
+        this->name = other.name ;
+        this->hitPoint = other.hitPoint ;
+        this->energyPoint = other.energyPoint ;
+        this->attackDamage = other.attackDamage ;
+    }
+    return (*this) ;
+}
+
+ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
+{
+    std::cout << getName() << "-Derived Spawned!" << std::endl ;
 }
 
 ScavTrap::~ScavTrap( void )
 {
-    std::cout << this->getName() << "-Derived Died!" << std::endl ;
+    std::cout << getName() << "-Derived Died!" << std::endl ;
 }
 
 void ScavTrap::guardGate()
 {
-    std::cout << this->getName() << " is now in Gate keeper mode" << std::endl ;
+    std::cout << getName() << " is now in Gate keeper mode" << std::endl ;
 }
