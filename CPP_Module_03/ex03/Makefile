@@ -1,4 +1,4 @@
-CC = g++
+CC = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98
 
