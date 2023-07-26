@@ -1,8 +1,7 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void )
+ScavTrap::ScavTrap( void ): ClapTrap("ScavTrap")
 {
-    this->name = "ScavTrap" ;
     this->hitPoint = 100 ;
     this->energyPoint = 50 ;
     this->attackDamage = 20 ;
@@ -11,7 +10,11 @@ ScavTrap::ScavTrap( void )
 
 ScavTrap::ScavTrap( const ScavTrap& other )
 {
-    *this = other ;
+    std::cout << getName() << " Created from " << other.name << "!" << std::endl ;
+    this->name = other.name ;
+    this->hitPoint = other.hitPoint ;
+    this->energyPoint = other.energyPoint ;
+    this->attackDamage = other.attackDamage ;
 }
 
 ScavTrap& ScavTrap::operator=( const ScavTrap& other )
@@ -29,6 +32,9 @@ ScavTrap& ScavTrap::operator=( const ScavTrap& other )
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
 {
+    this->hitPoint = 100 ;
+    this->energyPoint = 50 ;
+    this->attackDamage = 20 ;
     std::cout << getName() << "-Derived Spawned!" << std::endl ;
 }
 
