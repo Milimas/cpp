@@ -11,11 +11,13 @@ private:
     static const int    fractionalBits ;
 public:
     Fixed( void ) ;
-    Fixed( const int value ) ;
-    Fixed( const float value ) ;
-    Fixed( const Fixed &fixed ) ;
+    Fixed( const Fixed& fixed ) ;
     Fixed& operator=( const Fixed& other ) ;
     ~Fixed( void ) ;
+
+    Fixed( const int value ) ;
+    Fixed( const float value ) ;
+
     int getRawBits( void ) const ;
     void setRawBits( const int raw ) ;
     float toFloat( void ) const ;

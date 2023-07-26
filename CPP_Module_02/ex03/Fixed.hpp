@@ -8,15 +8,16 @@ class Fixed
 {
 private:
     int                 value ;
-    static const int    fractional_bits ;
+    static const int    fractionalBits ;
 
 public:
     Fixed( void ) ;
-    Fixed( const int value ) ;
-    Fixed( const float value ) ;
     Fixed( const Fixed& fixed ) ;
     Fixed& operator=( const Fixed& other ) ;
     ~Fixed( void ) ;
+
+    Fixed( const int value ) ;
+    Fixed( const float value ) ;
 
     bool operator>( const Fixed& other ) const ;
     bool operator<( const Fixed& other ) const ;
@@ -40,7 +41,7 @@ public:
     Fixed& operator--( void ) ;
 
     int getRawBits( void ) const ;
-    void setRawBits( int const raw ) ;
+    void setRawBits( const int raw ) ;
     float toFloat( void ) const ;
     int toInt( void ) const ;
 
@@ -51,6 +52,6 @@ public:
     static const Fixed fAbs( const Fixed& number ) ;
 };
 
-std::ostream& operator<<(std::ostream& os, const Fixed& obj);
+std::ostream& operator<<( std::ostream& os, const Fixed& obj );
 
 #endif

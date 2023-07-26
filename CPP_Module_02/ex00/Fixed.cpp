@@ -7,10 +7,9 @@ Fixed::Fixed( void ): value(0)
     std::cout << "Default constructor called" << std::endl ;
 }
 
-Fixed::Fixed( const Fixed& fixed )
+Fixed::Fixed( const Fixed& fixed ): value(fixed.value)
 {
     std::cout << "Copy constructor called" << std::endl ;
-    *this = fixed ;
 }
 
 Fixed& Fixed::operator=( const Fixed& other )

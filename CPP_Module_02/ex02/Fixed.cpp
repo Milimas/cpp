@@ -1,14 +1,14 @@
 #include "Fixed.hpp"
 
-const int Fixed::fractional_bits = 8 ;
+const int Fixed::fractionalBits = 8 ;
 
 Fixed::Fixed( void ): value(0) {}
 
 Fixed::Fixed( const Fixed& fixed ): value(fixed.value) {}
 
-Fixed::Fixed( const int value ): value(value << Fixed::fractional_bits) {}
+Fixed::Fixed( const int value ): value(value << Fixed::fractionalBits) {}
 
-Fixed::Fixed( const float value ): value(roundf(value * (1 << Fixed::fractional_bits))) {}
+Fixed::Fixed( const float value ): value(roundf(value * (1 << Fixed::fractionalBits))) {}
 
 Fixed::~Fixed( void ) {}
 
@@ -33,12 +33,12 @@ void Fixed::setRawBits( int const raw )
 
 float Fixed::toFloat( void ) const
 {
-    return ((float)(this->value) / (1 << Fixed::fractional_bits)) ;
+    return ((float)(this->value) / (1 << Fixed::fractionalBits)) ;
 }
 
 int Fixed::toInt( void ) const
 {
-    return (this->value / (1 << Fixed::fractional_bits)) ;
+    return (this->value / (1 << Fixed::fractionalBits)) ;
 }
 
 bool Fixed::operator>( const Fixed& other ) const
