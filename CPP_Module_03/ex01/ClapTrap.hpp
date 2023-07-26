@@ -5,7 +5,7 @@
 
 class ClapTrap
 {
-protected:
+private:
     std::string name ;
     int    hitPoint ;       //10
     int    energyPoint ;    //10
@@ -22,16 +22,10 @@ public:
     void takeDamage( unsigned int amount ) ;
     void beRepaired( unsigned int amount ) ;
 
-    std::string getName() ;
-    // int getHitPoint() ;
-    // int getEnergyPoint() ;
-    int getAttackDamage() ;
-
-    // void setName( std::string name ) ;
-    // void setHitPoint( int amount ) ;
-    // void setEnergyPoint( int amount ) ;
-    // void setAttackDamage( int amount ) ;
-
+    std::string getName() const ;
+    int getAttackDamage() const ;
 };
+
+std::ostream& operator<<( std::ostream& os, const ClapTrap& clapTrap ) ;
 
 #endif
