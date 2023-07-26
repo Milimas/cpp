@@ -5,9 +5,10 @@ ClapTrap::ClapTrap( void ): name("ClapTrap"), hitPoint(10), energyPoint(10), att
     std::cout << this->name << " Spawned!" << std::endl ;
 }
 
-ClapTrap::ClapTrap( const ClapTrap& other )
+ClapTrap::ClapTrap( const ClapTrap& other ): name(name), hitPoint(10), energyPoint(10), attackDamage(0)
 {
-    *this = other ;
+    std::cout << this->name << " Created from " << other.name << "!" << std::endl ;
+    // *this = other ;
 }
 
 ClapTrap& ClapTrap::operator=( const ClapTrap& other )
