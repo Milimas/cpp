@@ -128,6 +128,8 @@ x = -0.00390625
 
 #### Fixed point
 
+[Fixed point Sheet](https://docs.google.com/spreadsheets/d/1zVCpyq5oLJvndQdyd9-gP0527NfVwUjyuhBUoxKFJVg/edit?pli=1#gid=0)
+
 [Fixed-point arithmetic](https://en.wikipedia.org/wiki/Fixed-point_arithmetic)
 
 [Fixed Point Arithmetic : Division](https://witscad.com/course/computer-architecture/chapter/fixed-point-arithmetic-division)
