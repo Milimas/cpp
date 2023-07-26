@@ -1,22 +1,16 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed( void ): value(0) {
-    std::cout << "bitset:" << std::bitset<16>(this->value) << " ==> " << value << std::endl ;
-}
+const int Fixed::fractional_bits = 8 ;
 
-Fixed::Fixed( const Fixed& fixed ): value(fixed.value) {
-    std::cout << "bitset:" << std::bitset<16>(this->value) << " ==> " << value << std::endl ;
-}
+Fixed::Fixed( void ): value(0) {}
 
-Fixed::Fixed( const int value ): value((value << (Fixed::fractional_bits))) {
-    std::cout << "bitset:" << std::bitset<16>(this->value) << " ==> " << value << std::endl ;
-}
+Fixed::Fixed( const Fixed& fixed ): value(fixed.value) {}
 
-Fixed::Fixed( const float value ): value((int)(value * (1 << (Fixed::fractional_bits)))) {
-    std::cout << "bitset:" << std::bitset<16>(this->value) << " ==> " << value << std::endl ;
-}
+Fixed::Fixed( const int value ): value(value << Fixed::fractional_bits) {}
 
-Fixed::~Fixed() {}
+Fixed::Fixed( const float value ): value(roundf(value * (1 << Fixed::fractional_bits))) {}
+
+Fixed::~Fixed( void ) {}
 
 Fixed& Fixed::operator=( const Fixed& other )
 {
@@ -39,15 +33,15 @@ void Fixed::setRawBits( int const raw )
 
 float Fixed::toFloat( void ) const
 {
-    return ((float)(this->value) / (float)(1 << Fixed::fractional_bits)) ;
+    return ((float)(this->value) / (1 << Fixed::fractional_bits)) ;
 }
 
 int Fixed::toInt( void ) const
 {
-    return ((this->value) / (1 << Fixed::fractional_bits)) ;
+    return (this->value / (1 << Fixed::fractional_bits)) ;
 }
 
-bool Fixed::operator>( const Fixed& other )
+bool Fixed::operator>( const Fixed& other ) const
 {
     if (this != &other)
     {
@@ -57,7 +51,7 @@ bool Fixed::operator>( const Fixed& other )
     return (false) ;
 }
 
-bool Fixed::operator>=( const Fixed& other )
+bool Fixed::operator>=( const Fixed& other ) const
 {
     if (this != &other)
     {
@@ -67,7 +61,7 @@ bool Fixed::operator>=( const Fixed& other )
     return (true) ;
 }
 
-bool Fixed::operator<( const Fixed& other )
+bool Fixed::operator<( const Fixed& other ) const
 {
     if (this != &other)
     {
@@ -77,7 +71,7 @@ bool Fixed::operator<( const Fixed& other )
     return (false) ;
 }
 
-bool Fixed::operator<=( const Fixed& other )
+bool Fixed::operator<=( const Fixed& other ) const
 {
     if (this != &other)
     {
@@ -87,7 +81,7 @@ bool Fixed::operator<=( const Fixed& other )
     return (true) ;
 }
 
-bool Fixed::operator==( const Fixed& other )
+bool Fixed::operator==( const Fixed& other ) const
 {
     if (this != &other)
     {
@@ -97,7 +91,7 @@ bool Fixed::operator==( const Fixed& other )
     return (true) ;
 }
 
-bool Fixed::operator!=( const Fixed& other )
+bool Fixed::operator!=( const Fixed& other ) const
 {
     if (this != &other)
     {
@@ -107,14 +101,18 @@ bool Fixed::operator!=( const Fixed& other )
     return (false) ;
 }
 
-Fixed Fixed::operator+( const Fixed& other )
+Fixed Fixed::operator+( const Fixed& other ) const
 {
-    return (Fixed(this->toFloat() + other.toFloat())) ;
+    Fixed res ;
+    res.setRawBits(this->getRawBits() + other.getRawBits()) ;
+    return (res) ;
 }
 
-Fixed Fixed::operator-( const Fixed& other )
+Fixed Fixed::operator-( const Fixed& other ) const
 {
-    return (Fixed(this->toFloat() - other.toFloat())) ;
+    Fixed res ;
+    res.setRawBits(this->getRawBits() - other.getRawBits()) ;
+    return (res) ;
 }
 
 Fixed Fixed::operator*( const int& other ) const
@@ -122,12 +120,12 @@ Fixed Fixed::operator*( const int& other ) const
     return (Fixed(this->toFloat() * other)) ;
 }
 
-Fixed Fixed::operator*( const Fixed& other )
+Fixed Fixed::operator*( const Fixed& other ) const
 {
     return (Fixed(this->toFloat() * other.toFloat())) ;
 }
 
-Fixed Fixed::operator/( const int& other )
+Fixed Fixed::operator/( const int& other ) const
 {
     try
     {
@@ -139,10 +137,10 @@ Fixed Fixed::operator/( const int& other )
         std::cout << e.what() << std::endl ;
         return (*this);
     }
-    return (Fixed(*this / (Fixed(other)))) ;
+    return (Fixed(this->toFloat() / other)) ;
 }
 
-Fixed Fixed::operator/( const Fixed& other )
+Fixed Fixed::operator/( const Fixed& other ) const
 {
     try
     {
@@ -154,13 +152,7 @@ Fixed Fixed::operator/( const Fixed& other )
         std::cout << e.what() << std::endl ;
         return (*this);
     }
-    return ((float)((int)((long)(value << fractional_bits) / other.value)) / (float)(1 << fractional_bits)) ;
-    // uint v2 = 1 ;
-    // v2 <<= fractional_bits ;
-    // v2 = (uint)(v2 / other.value) ;
-    // int fp = value * v2 ;
-    // fp <<= 1 ;
-    // return (Fixed(fp)) ;
+    return (Fixed(this->toFloat() / other.toFloat())) ;
 }
 
 Fixed Fixed::operator++( int )

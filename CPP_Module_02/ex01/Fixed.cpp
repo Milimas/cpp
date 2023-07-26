@@ -17,7 +17,7 @@ Fixed::Fixed( const int value ): value(value << Fixed::fractionalBits)
     std::cout << "int Constructor" << std::endl ;
 }
 
-Fixed::Fixed( const float value ): value(value * (1 << Fixed::fractionalBits))
+Fixed::Fixed( const float value ): value(roundf(value * (1 << Fixed::fractionalBits)))
 {
     std::cout << "float Constructor" << std::endl ;
 }
@@ -46,7 +46,7 @@ int Fixed::getRawBits( void ) const
 void Fixed::setRawBits( const int raw )
 {
     std::cout << "setRawBits member function called" << std::endl ;
-    this->value = roundf(raw * (1 << Fixed::fractionalBits)) ;
+    this->value = raw ;
 }
 
 float Fixed::toFloat( void ) const

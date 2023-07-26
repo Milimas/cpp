@@ -3,15 +3,12 @@
 
 #include <iostream>
 #include <cmath>
-#include <stdexcept>
-#include <bitset>
-#include <sstream>
 
 class Fixed
 {
 private:
-    uint                 value ;
-    static const int    fractional_bits = 2 ;
+    int                 value ;
+    static const int    fractional_bits ;
 
 public:
     Fixed( void ) ;
@@ -19,29 +16,29 @@ public:
     Fixed( const float value ) ;
     Fixed( const Fixed& fixed ) ;
     Fixed& operator=( const Fixed& other ) ;
+    ~Fixed( void ) ;
 
-    bool operator>( const Fixed& other ) ;
-    bool operator<( const Fixed& other ) ;
-    bool operator>=( const Fixed& other ) ;
-    bool operator<=( const Fixed& other ) ;
-    bool operator==( const Fixed& other ) ;
-    bool operator!=( const Fixed& other ) ;
+    bool operator>( const Fixed& other ) const ;
+    bool operator<( const Fixed& other ) const ;
+    bool operator>=( const Fixed& other ) const ;
+    bool operator<=( const Fixed& other ) const ;
+    bool operator==( const Fixed& other ) const ;
+    bool operator!=( const Fixed& other ) const ;
 
-    Fixed operator+( const Fixed& other ) ;
-    Fixed operator-( const Fixed& other ) ;
-    Fixed operator*( const Fixed& other ) ;
-    Fixed operator/( const Fixed& other ) ;
+    Fixed operator+( const Fixed& other ) const ;
+    Fixed operator-( const Fixed& other ) const ;
+    Fixed operator*( const Fixed& other ) const ;
+    Fixed operator/( const Fixed& other ) const ;
     Fixed operator()( const Fixed& other ) ;
 
     Fixed operator*( const int& other ) const ;
-    Fixed operator/( const int& other ) ;
+    Fixed operator/( const int& other ) const ;
 
     Fixed operator++( int ) ;
     Fixed operator--( int ) ;
     Fixed& operator++( void ) ;
     Fixed& operator--( void ) ;
 
-    ~Fixed() ;
     int getRawBits( void ) const ;
     void setRawBits( int const raw ) ;
     float toFloat( void ) const ;
