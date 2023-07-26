@@ -19,9 +19,19 @@ Both `malloc()` and new are used to allocate the memory dynamically in heap. But
 
 ### Fixed-Point Numbers
 
-Fixed-point is a method of representing fractional numbers (real numbers) by storing the fractional part as an integer shifted to the left by the number of fractional bits of the fixed-point.
+Fixed points numbers are represented using integer values.
 
-A fixed-point consist of 2 parts an integer value and a fractional bits part. In order to store the value of a real number in fixed-point value we need to shift the value of the real number by the number of fractional bits of the fixed-point.
+As the name implies, the position of the point between the integer and fractional part is fixed - meaning the number of bits representing the integer part as well as the number of bits representing the fractional part is always the same. 
+
+In the following, the values NUM_INT_BITS and NUM_FRAC_BITS define the number of bits used for representing the integer respectively the fractional part of a decimal number.
+
+The examples and implementation uses all a 24.8 representation, meaning:
+
+NUM_INT_BITS = 24
+NUM_FRAC_BITS = 8
+NUM_TOTAL_BITS = NUM_INT_BITS + NUM_FRAC_BITS = 32 (size of int)
+
+In order to store the value of a real number in fixed-point we need to shift the value of the real number by the number of fractional bits of the fixed-point.
 
 in this module we are required to have a fracional bits equal to 8 and a 32bit integer variable to store the value of the fixed-point number.
 
@@ -53,13 +63,14 @@ realNumber          = fpValue / (1 << fractionalBits) ;
 
 The maximum number we can store in a fixed-point (8 fractional bits and a 24bit signed int) is  `8388607.996` and the minimum is `-8388608` and they are represented as follow:
 
-| Real number   | Fixed point value     | Binary                               |
-| :-:           | :-:                   | :-:                                  |
-| -8388608      | -2147483648           | 10000000 00000000 00000000 00000000  |
-| 8388607.996   | 2147483647            | 01111111 11111111 11111111 11111111  |
-| 0             | 0                     | 00000000 00000000 00000000 00000000  |
-| 1             | 256                   | 00000000 00000000 00000001 00000000  |
-| -1            | -256                  | 11111111 11111111 11111111 00000000  |
+| #                             | Real number   | Fixed point value     | Binary                               |
+| :--:                          | :-:           | :-:                   | :-:                                  |
+| min                           | -8388608      | -2147483648           | 10000000 00000000 00000000 00000000  |
+| max                           | 8388607.996   | 2147483647            | 01111111 11111111 11111111 11111111  |
+| min bits                      | 0             | 0                     | 00000000 00000000 00000000 00000000  |
+| max bits                      | -0.00390625   | -1                    | 11111111 11111111 11111111 11111111  |
+| max bits before decimal point | -1            | -256                  | 11111111 11111111 11111111 00000000  |
+| max bits after decimal point  | 0.99609375    | 255                   | 00000000 00000000 00000000 11111111  |
 
 ### Binary representaion:
 
