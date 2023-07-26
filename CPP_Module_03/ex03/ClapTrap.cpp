@@ -2,20 +2,19 @@
 
 ClapTrap::ClapTrap( void ): name("ClapTrap"), hitPoint(10), energyPoint(10), attackDamage(0)
 {
-    std::cout << *this << " Spawned!" << std::endl ;
+    std::cout << *this << " Default Constructor!" << std::endl ;
 }
 
 ClapTrap::ClapTrap( const ClapTrap& other ): name(other.name), hitPoint(other.hitPoint), energyPoint(other.energyPoint), attackDamage(other.attackDamage)
 {
-    std::cout << *this << " Created from " << other.name << "!" << std::endl ;
-    // *this = other ;
+    std::cout << *this << " Copied from " << other.name << "!" << std::endl ;
 }
 
 ClapTrap& ClapTrap::operator=( const ClapTrap& other )
 {
     if (this != &other)
     {
-        std::cout << *this << " Becomes " << other.name << "!" << std::endl ;
+        std::cout << *this << " Assigned from " << other.name << "!" << std::endl ;
         this->name = other.name ;
         this->hitPoint = other.hitPoint ;
         this->energyPoint = other.energyPoint ;
@@ -26,7 +25,7 @@ ClapTrap& ClapTrap::operator=( const ClapTrap& other )
 
 ClapTrap::ClapTrap( std::string name ): name(name), hitPoint(10), energyPoint(10), attackDamage(0)
 {
-    std::cout << *this << " Spawned!" << std::endl ;
+    std::cout << *this << " Name Constructor!" << std::endl ;
 }
 
 void ClapTrap::attack( const std::string& target )
@@ -77,7 +76,7 @@ void ClapTrap::beRepaired( unsigned int amount )
 
 ClapTrap::~ClapTrap( void )
 {
-    std::cout << *this << " Died!" << std::endl ;
+    std::cout << *this << " Destroyed!" << std::endl ;
 }
 
 std::string ClapTrap::getName() const

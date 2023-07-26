@@ -6,10 +6,10 @@
 class FragTrap : virtual public ClapTrap
 {
 protected:
-    std::string _name ;
-    int         _hitPoint ;
-    int         _energyPoint ;
-    int         _attackDamage ;
+    const std::string   _defaultName ;
+    const int           _defaultHitPoint ;
+    const int           _defaultEnergyPoint ;
+    const int           _defaultAttackDamage ;
 public:
     FragTrap( void ) ;
     FragTrap( const FragTrap& other ) ;
@@ -18,6 +18,10 @@ public:
     ~FragTrap( void ) ;
 
     void    highFivesGuys(void) ;
+    
+    const std::string getName() const ;
 };
+
+std::ostream& operator<<(std::ostream& os, const FragTrap& fragTrap) ;
 
 #endif

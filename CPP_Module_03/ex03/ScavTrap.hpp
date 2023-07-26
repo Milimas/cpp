@@ -6,10 +6,10 @@
 class ScavTrap : virtual public ClapTrap
 {
 protected:
-    std::string _name ;
-    int         _hitPoint ;
-    int         _energyPoint ;
-    int         _attackDamage ;
+    const std::string   _defaultName ;
+    const int           _defaultHitPoint ;
+    const int           _defaultEnergyPoint ;
+    const int           _defaultAttackDamage ;
 public:
     ScavTrap( void ) ;
     ScavTrap( const ScavTrap& other ) ;
@@ -20,6 +20,10 @@ public:
 
     void attack( const std::string& target ) ;
     void guardGate() ;
+
+    const std::string getName() const ;
 };
+
+std::ostream& operator<<(std::ostream& os, const ScavTrap& scavTrap) ;
 
 #endif

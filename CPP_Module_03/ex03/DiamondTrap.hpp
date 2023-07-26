@@ -19,6 +19,10 @@ public:
     
     void    whoAmI() ;
     void    attack( const std::string& target ) ;
+
+    const std::string getName() const ;
 };
+
+std::ostream& operator<<(std::ostream& os, const DiamondTrap& diamondTrap) ;
 
 #endif

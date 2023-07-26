@@ -7,6 +7,29 @@ int main( void )
     // DiamondTrap a ;
     // DiamondTrap b ;
     DiamondTrap zac("Zac") ;
+    DiamondTrap sac("Sac") ;
+
+    std::cout << "------------------------" << std::endl ;
+    zac.attack(sac.getName()) ;
+    std::cout << "------------------------" << std::endl ;
+
+    std::cout << "------------------------" << std::endl ;
+    zac.takeDamage(10) ;
+    std::cout << "------------------------" << std::endl ;
+
+    std::cout << "------------------------" << std::endl ;
+    sac = zac ;
+    std::cout << "------------------------" << std::endl ;
+
+    std::cout << "------------------------" << std::endl ;
+    zac.beRepaired(1);
+    std::cout << "------------------------" << std::endl ;
+
+    zac.guardGate() ;
+    zac.highFivesGuys() ;
+
+    sac.whoAmI() ;
+    zac.whoAmI() ;
     // DiamondTrap ahri("Ahri") ;
 
     // a.attack(b.getName()) ;
@@ -28,8 +51,8 @@ int main( void )
     // std::cout << "zac.getEnergyPoint ==> " <<  zac.getEnergyPoint() << std::endl ;
     // std::cout << "zac.getAttackDamage ==> " <<  zac.getAttackDamage() << std::endl ;
 
-    zac.highFivesGuys() ;
-    zac.guardGate() ;
-    zac.whoAmI() ;
-    zac.attack("Ahri") ;
+    // zac.highFivesGuys() ;
+    // zac.guardGate() ;
+    // zac.whoAmI() ;
+    // zac.attack("Ahri") ;
 }
