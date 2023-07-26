@@ -70,7 +70,9 @@ The maximum number we can store in a fixed-point (8 fractional bits and a 24bit 
 | min bits                      | 0             | 0                     | 00000000 00000000 00000000 00000000  |
 | max bits                      | -0.00390625   | -1                    | 11111111 11111111 11111111 11111111  |
 | max bits before decimal point | -1            | -256                  | 11111111 11111111 11111111 00000000  |
+| min bits before decimal point | 1             | 256                   | 00000000 00000000 00000001 00000000  |
 | max bits after decimal point  | 0.99609375    | 255                   | 00000000 00000000 00000000 11111111  |
+| min bits after decimal point  | 0.00390625    | 1                     | 00000000 00000000 00000000 00000001  |
 
 ### Binary representaion:
 
