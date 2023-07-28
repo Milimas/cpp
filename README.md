@@ -103,11 +103,13 @@ x = -8388608 + 4194304 + 2097152 + 1048576 + 524288 + 262144 + 131072 + 65536 + 
 
 x = -0.00390625
 
+## day 03
 
 ## resouces:
 
 ### general resources
 [cplusplus.com](https://cplusplus.com/reference/)
+[Design Patterns](http://uml.org.cn/c++/pdf/DesignPatterns.pdf)
 
 ### day00
 
@@ -118,6 +120,12 @@ x = -0.00390625
 ### day02
 
 #### Floating point
+[Binary 1 - Converting to and from Denary](https://www.youtube.com/watch?v=cJNm938Xwao)
+
+[https://www.youtube.com/watch?v=mRvcGijXI9w](https://www.youtube.com/watch?v=mRvcGijXI9w)
+
+[IEEE 754 Standard for Floating Point Binary Arithmetic](https://www.youtube.com/watch?v=RuKkePyo9zk)
+
 [Understanding and Using Floating Point Numbers](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point.html)
 
 [Floating point number representation](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html)
@@ -146,3 +154,82 @@ x = -0.00390625
 [Fixed Point Representation](https://www.geeksforgeeks.org/fixed-point-representation/)
 
 [Fixed-Point Arithmetic: An Introduction](http://www.digitalsignallabs.com/fp.pdf)
+
+### day 03
+
+[The diamond problem](https://en.wikipedia.org/wikiMultiple_inheritance#The_diamond_problem)
+
+## Definitions
+
+### Class
+A class defines an object's interface and implementation. It specifies the object's internal representation and defines the operations the object can perform.
+
+### Instance variable
+A piece of data that defines part of an object's representation. C++ uses the term `data member`.
+
+### Constructor
+In C++, an operation that is automatically invoked to initialize new instances.
+
+### Destructor
+In C++, an operation that is automatically invoked to finalize an object that is about to be deleted.
+
+### Encapsulation
+The result of hiding a representation and implementation in an object. The representation is not visible and cannot be accessed directly from outside the object. Operations are the only way to access and modify an object's representation.
+
+### Delegation
+An implementation mechanism in which an object forwards or delegates a request to another object. The delegate carries out the request on behalf
+of the original object.
+
+### Dynamic binding
+The run-time association of a request to an object and one of its operations. In C++, only virtual functions are dynamically bound.
+
+### Class operation
+An operation targeted to a class and not to an individual object. In C++, class operations are are called static member functions.
+
+### Abstract class
+A class whose primary purpose is to define an interface. An abstract class defers some or all of its implementation to subclasses. An abstract class cannot be instantiated.
+
+### Abstract operation
+An operation that declares a signature but doesn't implement it. In C++, an abstract operation corresponds to a `pure virtual member function`.
+
+### Friend class
+In C++, a class that has the same access rights to the operations and data of a class as that class itself.
+
+### Inheritance
+A relationship that defines one entity in terms of another. `Class inheritance` defines a new class in terms of one or more parent classes. The new class inherits its interface and implementation from its parents. The new class is called a `subclass` or (in C++) a `derived class`. Class inheritance combines `interface inheritance` and `implementation inheritance`. Interface inheritance defines a new interface in terms of one or more existing interfaces. Implementation inheritance defines a new implementation in terms of one or more existing implementations.
+
+### Interface
+The set of all signatures defined by an object's operations. The interface describes the set of requests to which an object can respond.
+
+### Object
+A run-time entity that packages both data and the procedures that operate on that data.
+
+### Object reference
+A value that identifies another object.
+
+### Operation
+An object's data can be manipulated only by its operations. An object performs an operation when it receives a request. In C++, operations are called `member functions`. Smalltalk uses the term `method`.
+
+### Overriding
+Redefining an operation (inherited from a parent class) in a subclass.
+
+### Parent class
+The class from which another class inherits. Synonyms are `superclass` (Smalltalk), base class (C++), and `ancestor class`.
+
+### Polymorphism
+The ability to substitute objects of matching interface for one another at run-time.
+
+### private inheritance
+In C++, a class inherited solely for its implementation.
+
+### Subclass
+A class that inherits from another class. In C++, a subclass is called a `derived class`.
+
+### Type
+The name of a particular interface.
+
+### Subtype
+A type is a subtype of another if its interface contains the interface of the other type.
+
+### Supertype
+The parent type from which a type inherits.
