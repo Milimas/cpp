@@ -6,7 +6,7 @@
 class Character : public ICharacter
 {
 private:
-    std::string name ;
+    const std::string name ;
     // Your character’s inventory will be able to support any type of AMateria.
     AMateria    *(inventory[4]) ;
 public:
