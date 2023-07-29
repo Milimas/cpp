@@ -1,17 +1,23 @@
 #ifndef ICE_HPP
 #define ICE_HPP
 
-#include "ICharacter.hpp"
+#include "AMateria.hpp"
+#include "Character.hpp"
 
-class Ice
+class Ice : public AMateria
 {
 private:
+    const std::string type ;
 public:
     Ice( void ) ;
-    Ice& Ice( const Ice& ice ) ;
+    Ice( const Ice& ice ) ;
     Ice& operator=( const Ice& ice ) ;
     ~Ice( void ) ;
-    void use(int idx, ICharacter& target) ;
+
+    const std::string getType( void ) const ;
+
+    void use( ICharacter& target ) ;
+    AMateria* clone( void ) const ;
 };
 
 #endif

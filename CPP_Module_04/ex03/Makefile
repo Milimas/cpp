@@ -2,8 +2,14 @@ CC = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
+PREPROCFLAG = -E
+
 SRC =	main.cpp		\
 		AMateria.cpp	\
+		Character.cpp	\
+		MateriaSource.cpp	\
+		Ice.cpp	\
+		Cure.cpp	\
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -13,6 +19,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+
+preproc:
+	$(CC) $(PREPROCFLAG) $(SRC)
 
 clean:
 	rm -f $(OBJ)

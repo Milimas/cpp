@@ -1,18 +1,30 @@
 #ifndef A_MATERIA_HPP
 #define A_MATERIA_HPP
 
+#include <iostream>
+#include "ICharacter.hpp"
+
+class ICharacter ;
+
+/*
+* Complete the definition of the following AMateria class and implement the necessary member functions.
+*/
 class AMateria
 {
 protected:
-    [...]
+    const std::string type ;
 public:
-    AMateria(std::string const & type);
-    [...]
+    AMateria( void ) ;
+    AMateria( const AMateria& rhs ) ;
+    AMateria& operator=( const AMateria& rhs ) ;
+    virtual ~AMateria( void ) ;
 
-    std::string const & getType() const; //Returns the materia type
+    AMateria( const std::string& type ) ;
 
-    virtual AMateria* clone() const = 0;
-    virtual void use(ICharacter& target);
+    const std::string& getType( void ) const ; //Returns the materia type
+
+    virtual void use( ICharacter& ) ;
+    virtual AMateria* clone( void ) const = 0 ;
 };
 
 #endif

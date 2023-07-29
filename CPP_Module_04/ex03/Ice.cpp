@@ -1,22 +1,41 @@
 #include "Ice.hpp"
 
-Ice::Ice( void )
+Ice::Ice( void ): AMateria("ice"), type("ice")
 {
+    std::cout << __PRETTY_FUNCTION__ << std::endl ;
 }
 
-Ice& Ice::Ice( const Ice& ice )
+Ice::Ice( const Ice& ice ): AMateria(ice), type(ice.type)
 {
+    std::cout << __PRETTY_FUNCTION__ << std::endl ;
 }
 
 Ice& Ice::operator=( const Ice& ice )
 {
+    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    (void) ice ;
+    return (*this) ;
 }
 
 Ice::~Ice( void )
 {
+    std::cout << __PRETTY_FUNCTION__ << std::endl ;
 }
 
-void Ice::use(int idx, ICharacter& target)
+const std::string Ice::getType( void ) const
 {
-    std::cout << "* shoots an ice bolt at " << target.name << " *" << std::endl ;
+    // std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    return (this->type) ;
+}
+
+void Ice::use( ICharacter& target )
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl ;
+}
+
+AMateria* Ice::clone( void ) const
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    return (new Ice()) ;
 }

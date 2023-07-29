@@ -1,18 +1,22 @@
 #ifndef CURE_HPP
 #define CURE_HPP
 
-#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
-class Cure
+class Cure : public AMateria 
 {
 private:
+    const std::string type ;
 public:
     Cure( void ) ;
-    Cure& Cure( const Cure& cure ) ;
+    Cure( const Cure& cure ) ;
     Cure& operator=( const Cure& cure ) ;
     ~Cure( void ) ;
 
-    void use(int idx, ICharacter& target) ;
+    const std::string getType( void ) const ;
+
+    void use( ICharacter& target ) ;
+    AMateria* clone( void ) const ;
 };
 
 #endif
