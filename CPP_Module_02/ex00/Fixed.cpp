@@ -17,7 +17,7 @@ Fixed& Fixed::operator=( const Fixed& other )
     std::cout << __PRETTY_FUNCTION__ << std::endl ;
     if (this != &other)
     {
-        this->value = other.getRawBits() ;
+        this->value = other.value ;
     }
     return (*this) ;
 }

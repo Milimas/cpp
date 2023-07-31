@@ -45,7 +45,7 @@ bool Fixed::operator>( const Fixed& other ) const
 {
     if (this != &other)
     {
-        if (this->getRawBits() > other.getRawBits())
+        if (this->value > other.value)
             return (true) ;
     }
     return (false) ;
@@ -55,7 +55,7 @@ bool Fixed::operator>=( const Fixed& other ) const
 {
     if (this != &other)
     {
-        if (this->getRawBits() < other.getRawBits())
+        if (this->value < other.value)
             return (false) ;
     }
     return (true) ;
@@ -65,7 +65,7 @@ bool Fixed::operator<( const Fixed& other ) const
 {
     if (this != &other)
     {
-        if (this->getRawBits() < other.getRawBits())
+        if (this->value < other.value)
             return (true) ;
     }
     return (false) ;
@@ -75,7 +75,7 @@ bool Fixed::operator<=( const Fixed& other ) const
 {
     if (this != &other)
     {
-        if (this->getRawBits() > other.getRawBits())
+        if (this->value > other.value)
             return (false) ;
     }
     return (true) ;
@@ -85,7 +85,7 @@ bool Fixed::operator==( const Fixed& other ) const
 {
     if (this != &other)
     {
-        if (this->getRawBits() != other.getRawBits())
+        if (this->value != other.value)
             return (false) ;
     }
     return (true) ;
@@ -95,7 +95,7 @@ bool Fixed::operator!=( const Fixed& other ) const
 {
     if (this != &other)
     {
-        if (this->getRawBits() != other.getRawBits())
+        if (this->value != other.value)
             return (true) ;
     }
     return (false) ;
@@ -104,14 +104,14 @@ bool Fixed::operator!=( const Fixed& other ) const
 Fixed Fixed::operator+( const Fixed& other ) const
 {
     Fixed res ;
-    res.setRawBits(this->getRawBits() + other.getRawBits()) ;
+    res.setRawBits(this->value + other.value) ;
     return (res) ;
 }
 
 Fixed Fixed::operator-( const Fixed& other ) const
 {
     Fixed res ;
-    res.setRawBits(this->getRawBits() - other.getRawBits()) ;
+    res.setRawBits(this->value - other.value) ;
     return (res) ;
 }
 
