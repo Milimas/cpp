@@ -8,7 +8,6 @@ ClapTrap::ClapTrap( void ): name("ClapTrap"), hitPoint(10), energyPoint(10), att
 ClapTrap::ClapTrap( const ClapTrap& other ): name(other.name), hitPoint(other.hitPoint), energyPoint(other.energyPoint), attackDamage(other.attackDamage)
 {
     std::cout << *this << " Created from " << other.name << "!" << std::endl ;
-    // *this = other ;
 }
 
 ClapTrap& ClapTrap::operator=( const ClapTrap& other )
