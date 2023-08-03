@@ -109,6 +109,7 @@ x = -0.00390625
 
 ### general resources
 [cplusplus.com](https://cplusplus.com/reference/)
+
 [Design Patterns](http://uml.org.cn/c++/pdf/DesignPatterns.pdf)
 
 ### day00
