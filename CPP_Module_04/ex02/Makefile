@@ -10,7 +10,7 @@ SRC =	main.cpp		\
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = WorldOnFire
+NAME = Abstract
 
 all: $(NAME)
 
