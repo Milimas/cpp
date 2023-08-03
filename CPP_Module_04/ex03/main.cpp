@@ -3,7 +3,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
-int main()
+int main2()
 {
     IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
@@ -27,4 +27,11 @@ int main()
     delete src;
     
     return 0;
+}
+
+int main()
+{
+    main2() ;
+    // system("leaks Interface") ;
+    return (0) ;
 }
