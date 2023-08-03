@@ -160,6 +160,10 @@ x = -0.00390625
 
 [The diamond problem](https://en.wikipedia.org/wikiMultiple_inheritance#The_diamond_problem)
 
+### day 04
+
+[What is the difference between memberwise copy, bitwise copy, shallow copy and deep copy?](https://stackoverflow.com/questions/42749439/what-is-the-difference-between-memberwise-copy-bitwise-copy-shallow-copy-and-d)
+
 ## Definitions
 
 ### Class
