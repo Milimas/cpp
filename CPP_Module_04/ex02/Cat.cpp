@@ -5,7 +5,7 @@ Cat::Cat( void ): Animal(), type("Cat"), brain(new Brain())
     std::cout << "Cat::" << this->type << " Created" << std::endl ;
 }
 
-Cat::Cat( const Cat& other ): Animal(other), type(other.type), brain(other.brain)
+Cat::Cat( const Cat& other ): Animal(other), type(other.type), brain(new Brain(*other.brain))
 {
     std::cout << "Cat::" << this->type << " Called Copy Constructor" << std::endl ;
 }
@@ -18,13 +18,13 @@ Cat::~Cat( void )
 
 Cat& Cat::operator=( const Cat& other )
 {
+    std::cout << "Cat::" << this->type << " Called Copy Assignment operator" << std::endl ;
     if (this != &other)
     {
-        this->type = other.type ;
-        this->brain = other.brain ;
         Animal::operator=(other) ;
+        this->type = other.type ;
+        *this->brain = *other.brain ;
     }
-    std::cout << "Cat::" << this->type << " Called Copy Assignment operator" << std::endl ;
     return (*this) ;
 }
 
