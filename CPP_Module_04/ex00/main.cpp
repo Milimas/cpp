@@ -7,34 +7,45 @@
 int main()
 {
     {
-        const Animal* meta = new Animal() ;
-        const Animal* j = new Dog() ;
-        const Animal* i = new Cat() ;
+        const Animal* animal = new Animal() ;
+        const Animal* dog = new Dog() ;
+        const Animal* cat = new Cat() ;
 
         std::cout << "---------" << std::endl ;
         
-        std::cout << j->getType() << " " << std::endl ;
-        std::cout << i->getType() << " " << std::endl ;
+        std::cout << dog->getType() << " " << std::endl ;
+        std::cout << cat->getType() << " " << std::endl ;
         
         std::cout << "---------" << std::endl ;
 
-        i->makeSound() ; //will output the cat sound!
-        j->makeSound() ;
-        meta->makeSound() ;
+        cat->makeSound() ; //will output the cat sound!
+        dog->makeSound() ;
+        animal->makeSound() ;
+
+        std::cout << "---------" << std::endl ;
+
+        delete animal ;
+        delete cat ;
+        delete dog ;
     }
     std::cout << "---------" << std::endl ;
     {
-        const WrongAnimal* meta = new WrongAnimal() ;
-        const WrongAnimal* i = new WrongCat() ;
+        const WrongAnimal* wAnimal = new WrongAnimal() ;
+        const WrongAnimal* wCat = new WrongCat() ;
 
         std::cout << "---------" << std::endl ;
 
-        std::cout << i->getType() << " " << std::endl ;
+        std::cout << wCat->getType() << " " << std::endl ;
 
         std::cout << "---------" << std::endl ;
 
-        i->makeSound() ; //will output the wrong animal sound!
-        meta->makeSound() ;
+        wCat->makeSound() ; //will output the wrong animal sound!
+        wAnimal->makeSound() ;
+
+        std::cout << "---------" << std::endl ;
+
+        delete wAnimal ;
+        delete wCat ;
     }
     return 0 ;
 }
