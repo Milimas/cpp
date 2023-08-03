@@ -10,13 +10,13 @@ protected:
 public:
     Animal( void ) ;
     Animal( const Animal& other ) ;
-    ~Animal( void ) ;
+    virtual ~Animal( void ) ;
     Animal& operator=( const Animal& other) ;
 
     Animal( const std::string name ) ;
     
     virtual void makeSound( void ) const ; // It will print an appropriate sound (cats don’t bark)
-    std::string getType( void ) const ;
+    virtual std::string getType( void ) const ;
 };
 
 #endif

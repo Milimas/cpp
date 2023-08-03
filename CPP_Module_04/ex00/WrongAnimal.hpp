@@ -11,7 +11,7 @@ public:
     WrongAnimal( void ) ;
     WrongAnimal( const std::string type ) ;
     WrongAnimal( const WrongAnimal& other ) ;
-    ~WrongAnimal( void ) ;
+    virtual ~WrongAnimal( void ) ;
     WrongAnimal& operator=( const WrongAnimal& other) ;
 
     void makeSound( void ) const ; // It will print an appropriate sound (cats don’t bark)
