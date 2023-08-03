@@ -5,7 +5,7 @@ Animal::Animal( void ): type("Animal")
     std::cout << "Animal::" << this->type << " Created" << std::endl ;
 }
 
-Animal::Animal( const std::string name ): type(name)
+Animal::Animal( const std::string type ): type(type)
 {
     std::cout << "Animal::" << this->type << " Created" << std::endl ;
 }
