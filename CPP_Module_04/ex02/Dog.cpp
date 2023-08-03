@@ -1,11 +1,11 @@
 #include "Dog.hpp"
 
-Dog::Dog( void ): Animal(), type("Dog"), brain(new Brain())
+Dog::Dog( void ): AAnimal(), type("Dog"), brain(new Brain())
 {
     std::cout << "Dog::" << this->type << " Created" << std::endl ;
 }
 
-Dog::Dog( const Dog& other ): Animal(other), type(other.type), brain(new Brain(*other.brain))
+Dog::Dog( const Dog& other ): AAnimal(other), type(other.type), brain(new Brain(*other.brain))
 {
     std::cout << "Dog::" << this->type << " Called Copy Constructor" << std::endl ;
 }
@@ -21,7 +21,7 @@ Dog& Dog::operator=( const Dog& other)
     std::cout << "Dog::" << this->type << " Called Copy Assignment operator" << std::endl ;
     if (this != &other)
     {
-        Animal::operator=(other) ;
+        AAnimal::operator=(other) ;
         this->type = other.type ;
         *this->brain = *other.brain ;
     }
