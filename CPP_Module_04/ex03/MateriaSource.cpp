@@ -2,35 +2,39 @@
 
 MateriaSource::MateriaSource( void )
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    // std::cout << __PRETTY_FUNCTION__ << std::endl ;
     for (int idx = 0; idx < 4; idx++)
-        this->inventory[idx] = NULL;
+        this->inventory[idx] = NULL ;
 }
 
 MateriaSource::MateriaSource( const MateriaSource& rhs )
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    // std::cout << __PRETTY_FUNCTION__ << std::endl ;
     (void)rhs ;
     for (int idx = 0; idx < 4; idx++)
-        this->inventory[idx] = rhs.inventory[idx];
+        delete this->inventory[idx] ;
+    for (int idx = 0; idx < 4; idx++)
+        this->inventory[idx] = rhs.inventory[idx]->clone() ;
 }
 
 MateriaSource& MateriaSource::operator=( const MateriaSource& rhs )
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    // std::cout << __PRETTY_FUNCTION__ << std::endl ;
     if (this != &rhs)
     {
         for (int idx = 0; idx < 4; idx++)
-            this->inventory[idx] = this->inventory[idx];
+            delete this->inventory[idx] ;
+        for (int idx = 0; idx < 4; idx++)
+            this->inventory[idx] = this->inventory[idx]->clone() ;
     }
     return (*this) ;
 }
 
 MateriaSource::~MateriaSource( void )
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    // std::cout << __PRETTY_FUNCTION__ << std::endl ;
     for (int idx = 0; idx < 4; idx++)
-        delete this->inventory[idx];
+        delete this->inventory[idx] ;
 }
 
 /*
@@ -40,7 +44,7 @@ MateriaSource::~MateriaSource( void )
 */
 void MateriaSource::learnMateria( AMateria* materia )
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    // std::cout << __PRETTY_FUNCTION__ << std::endl ;
     for (int idx = 0; idx < 4; idx++)
     {
         if (!this->inventory[idx])
@@ -58,12 +62,12 @@ void MateriaSource::learnMateria( AMateria* materia )
 */
 AMateria* MateriaSource::createMateria( const std::string& type )
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    // std::cout << __PRETTY_FUNCTION__ << std::endl ;
     for (int idx = 0; idx < 4; idx++)
     {
         if (this->inventory[idx]->getType() == type)
         {
-            return (this->inventory[idx]->clone());
+            return (this->inventory[idx]->clone()) ;
         }
     }
     return (NULL) ;
