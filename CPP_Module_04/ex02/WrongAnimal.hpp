@@ -10,7 +10,7 @@ protected:
 public:
     WrongAnimal( void ) ;
     WrongAnimal( WrongAnimal& other ) ;
-    ~WrongAnimal( void ) ;
+    virtual ~WrongAnimal( void ) ;
     WrongAnimal& operator=( WrongAnimal& other) ;
 
     void makeSound( void ) const ; // It will print an appropriate sound (cats don’t bark)
