@@ -20,7 +20,7 @@ int main()
 {
     
     main2() ;
-    system("leaks WorldOnFire");
+    system("leaks Abstract");
 
     return 0;
 }
