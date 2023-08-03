@@ -7,6 +7,7 @@
 class Cat: public Animal
 {
 private:
+    std::string type ;
     Brain* brain ;
 public:
     Cat( void ) ;
@@ -15,6 +16,7 @@ public:
     Cat& operator=( const Cat& other) ;
 
     void makeSound( void ) const ;
+    std::string getType( void ) const ;
 };
 
 #endif
