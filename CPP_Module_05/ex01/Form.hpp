@@ -17,7 +17,7 @@ private:
 	void	checkGrade( std::string gradeName, unsigned grade ) const ;
 public:
 	Form( void ) ;
-	Form( const Form& Form ) ;
+	Form( const Form& form ) ;
 	Form& operator=( const Form& other ) ;
 	~Form( void ) ;
 	Form( std::string name, unsigned gradeToSign, unsigned gradeToExecute ) ;
@@ -66,5 +66,7 @@ public:
 		}
 	} ;
 };
+
+std::ostream& operator<<( std::ostream& os, const Form& form ) ;
 
 #endif

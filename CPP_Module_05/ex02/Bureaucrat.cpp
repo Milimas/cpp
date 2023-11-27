@@ -9,6 +9,7 @@ Bureaucrat::Bureaucrat( const Bureaucrat& bureaucrat ) : name(bureaucrat.name)
 {
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
     this->grade = bureaucrat.grade ;
+    std::cerr << "Copy Constructor" << std::endl ;
 }
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat& other )
@@ -59,6 +60,18 @@ void Bureaucrat::decrement( void )
 {
     this->grade++;
     checkGrade() ;
+}
+
+void Bureaucrat::signForm( AForm& form )
+{
+    form.beSigned(*this) ;
+    std::cout << name << " signed " << form.getName() << std::endl ;
+}
+
+void Bureaucrat::executeForm( AForm const& form ) const
+{
+    form.execute(*this) ;
+    std::cout << name << " executed " << form.getName() << std::endl ;
 }
 
 std::ostream& operator<<( std::ostream& os, const Bureaucrat& bureaucrat )

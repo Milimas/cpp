@@ -2,25 +2,25 @@
 
 Bureaucrat::Bureaucrat( void ) : name("Bureaucrat"), grade(1)
 {
-    std::cout << "Bureaucrat Created" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat& bureaucrat ) : name(bureaucrat.name)
 {
     this->grade = bureaucrat.grade ;
-    std::cout << "Copy Constructor" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
 }
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat& other )
 {
     this->grade = other.grade ;
-    std::cout << "Copy assignment Constructor" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
     return (*this) ;
 }
 
 Bureaucrat::~Bureaucrat( void )
 {
-    std::cout << "Destructor" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
 }
 
 void Bureaucrat::checkGrade( void ) const
@@ -33,7 +33,7 @@ void Bureaucrat::checkGrade( void ) const
 
 Bureaucrat::Bureaucrat( std::string name, unsigned grade ) : name(name)
 {
-    std::cout << "Bureaucrat: " << name << " Created" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
     this->grade = grade ;
     checkGrade() ;
 }

@@ -2,25 +2,25 @@
 
 Form::Form( void ) : name("Form"), isSigned(false), gradeToSign(1), gradeToExecute(1)
 {
-    std::cout << "Form Created" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
 }
 
 Form::Form( const Form& form )
     : name(form.name), isSigned(form.isSigned), gradeToSign(form.gradeToSign), gradeToExecute(form.gradeToExecute)
 {
-    std::cout << "Copy Constructor" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
 }
 
 Form& Form::operator=( const Form& other )
 {
     this->isSigned = other.isSigned ;
-    std::cout << "Copy assignment Constructor" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
     return (*this) ;
 }
 
 Form::~Form( void )
 {
-    std::cout << "Destructor" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
 }
 
 void Form::checkGrade( std::string gradeName, unsigned grade ) const
@@ -34,7 +34,7 @@ void Form::checkGrade( std::string gradeName, unsigned grade ) const
 Form::Form( std::string name, unsigned gradeToSign, unsigned gradeToExecute )
     : name(name), isSigned(false), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute)
 {
-    std::cout << "Form: " << name << " Created" << std::endl ;
+    std::cerr << __PRETTY_FUNCTION__ << std::endl ;
     checkGrade("GradeToSign", gradeToSign) ;
     checkGrade("GradeToExecute", gradeToExecute) ;
 }
@@ -76,9 +76,9 @@ void    Form::beSigned( Bureaucrat& bureaucrat )
         std::cout << bureaucrat.getName() << " couldn't sign " << name << "because it's already signed" << std::endl ;
 }
 
-std::ostream& operator<<( std::ostream& os, const Form& Form )
+std::ostream& operator<<( std::ostream& os, const Form& form )
 {
-    os << Form.getName() << ", Form grade to sign: " << Form.getGradeToSign()
-        << ", grade to execute: " << Form.getGradeToExecute() << "." ;
+    os << form.getName() << ", form grade to sign: " << form.getGradeToSign()
+        << ", grade to execute: " << form.getGradeToExecute() << "." ;
     return (os) ;
 }
