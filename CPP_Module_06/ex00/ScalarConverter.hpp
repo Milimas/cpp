@@ -7,7 +7,7 @@
 class ScalarConverter
 {
 private:
-    enum            Type {tNan, tChar, tInt, tFloat, tDouble} ;
+    enum            Type {tNan, tPseudo, tChar, tInt, tFloat, tDouble} ;
     static Type     type ;
     static char     _char ;
     static int      _int ;
@@ -22,11 +22,15 @@ private:
 
     static Type getType( std::string input ) ;
     
+    static bool isPseudo( std::string input ) ;
+    static bool isPseudoF( std::string input ) ;
     static bool isChar( std::string input ) ;
     static bool isInt( double num, std::string input ) ;
     static bool isFloat( double num, std::string input ) ;
     static bool isDouble( double num, std::string input ) ;
 
+    static double fromPseudo( std::string input ) ;
+    static float fromPseudoF( std::string input ) ;
     static void fromChar( std::string input ) ;
     static void fromInt( std::string input ) ;
     static void fromFloat( std::string input ) ;
