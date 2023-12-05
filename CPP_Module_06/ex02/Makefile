@@ -3,11 +3,11 @@ CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 
 SRC =	main.cpp					\
-		Serializer.cpp				\
+		Base.cpp					\
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = Serialization
+NAME = IdentifyRealType
 
 all: $(NAME)
 
