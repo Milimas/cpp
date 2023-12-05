@@ -44,7 +44,7 @@ public:
         const char* what( void ) const throw() 
         {
             return (msg.c_str()) ;
-        }
+        } ;
     } ;
 	class GradeTooLowException: public std::exception
     {
@@ -62,7 +62,7 @@ public:
         const char* what( void ) const throw() 
         {
             return (msg.c_str()) ;
-        }
+        } ;
     } ;
 };
 
