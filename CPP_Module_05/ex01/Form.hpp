@@ -2,6 +2,7 @@
 #define FORM_HPP
 
 #include <iostream>
+#include <sstream>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat ;

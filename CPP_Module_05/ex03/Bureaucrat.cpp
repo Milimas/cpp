@@ -26,10 +26,12 @@ Bureaucrat::~Bureaucrat( void )
 
 void Bureaucrat::checkGrade( void ) const
 {
+	std::ostringstream msg ;
+	msg << "Grade : " << (int)grade ;
     if (grade < 1)
-        throw Bureaucrat::GradeTooHighException("Grade: " + std::to_string(grade)) ;
+        throw Bureaucrat::GradeTooHighException(msg.str()) ;
     if (grade > 150)
-        throw Bureaucrat::GradeTooLowException("Grade: " + std::to_string(grade)) ;
+        throw Bureaucrat::GradeTooLowException(msg.str()) ;
 }
 
 Bureaucrat::Bureaucrat( std::string name, unsigned grade ) : name(name)

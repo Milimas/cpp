@@ -25,10 +25,12 @@ AForm::~AForm( void )
 
 void AForm::checkGrade( std::string gradeName, unsigned grade ) const
 {
+	std::ostringstream msg ;
+	msg << gradeName << ": " << (int)grade ;
     if (grade < 1)
-        throw AForm::GradeTooHighException(gradeName + ": " + std::to_string(grade)) ;
+        throw AForm::GradeTooHighException(msg.str()) ;
     if (grade > 150)
-        throw AForm::GradeTooLowException(gradeName + ": " + std::to_string(grade)) ;
+        throw AForm::GradeTooLowException(msg.str()) ;
 }
 
 void AForm::checkExecution( const Bureaucrat& executor ) const

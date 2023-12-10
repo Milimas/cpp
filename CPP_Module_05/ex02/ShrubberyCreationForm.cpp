@@ -16,10 +16,9 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm& form )
+ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm& form ) : AForm(form)
 {
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
-    AForm::operator=(form) ;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=( const ShrubberyCreationForm& other )
@@ -34,7 +33,7 @@ void    ShrubberyCreationForm::execute( Bureaucrat const& executor ) const
     AForm::checkExecution(executor) ;
     try
     {
-        std::ofstream outfile(target) ;
+        std::ofstream outfile(target.c_str()) ;
         outfile
         << "              _{\\ _{\\{\\/}/}/}__" << std::endl
         << "             {/{/\\}{/{/\\}(\\}{/\\} _" << std::endl

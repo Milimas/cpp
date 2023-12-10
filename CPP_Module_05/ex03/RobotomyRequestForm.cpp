@@ -16,10 +16,9 @@ RobotomyRequestForm::~RobotomyRequestForm()
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm& form ) : target(form.target)
+RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm& form ) : AForm(form), target(form.target)
 {
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
-    AForm::operator=(form) ;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=( const RobotomyRequestForm& other )

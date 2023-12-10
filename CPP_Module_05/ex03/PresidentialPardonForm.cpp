@@ -16,10 +16,9 @@ PresidentialPardonForm::~PresidentialPardonForm()
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm& form ) : target(form.target)
+PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm& form ) : AForm(form), target(form.target)
 {
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
-    AForm::operator=(form) ;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=( const PresidentialPardonForm& other )

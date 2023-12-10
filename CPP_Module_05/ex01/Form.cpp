@@ -25,10 +25,12 @@ Form::~Form( void )
 
 void Form::checkGrade( std::string gradeName, unsigned grade ) const
 {
+	std::ostringstream msg ;
+	msg << gradeName << ": " << (int)grade ;
     if (grade < 1)
-        throw Form::GradeTooHighException(gradeName + ": " + std::to_string(grade)) ;
+        throw Form::GradeTooHighException(msg.str()) ;
     if (grade > 150)
-        throw Form::GradeTooLowException(gradeName + ": " + std::to_string(grade)) ;
+        throw Form::GradeTooLowException(msg.str()) ;
 }
 
 Form::Form( std::string name, unsigned gradeToSign, unsigned gradeToExecute )

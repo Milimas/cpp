@@ -2,6 +2,7 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include <sstream>
 
 class Bureaucrat
 {
@@ -12,9 +13,9 @@ private:
 	void	checkGrade( void ) const ;
 public:
 	Bureaucrat( void ) ;
-    Bureaucrat( const Bureaucrat& bureaucrat ) ;
-    Bureaucrat& operator=( const Bureaucrat& other ) ;
-    ~Bureaucrat( void ) ;
+    	Bureaucrat( const Bureaucrat& bureaucrat ) ;
+    	Bureaucrat& operator=( const Bureaucrat& other ) ;
+	~Bureaucrat( void ) ;
 	Bureaucrat( std::string name, unsigned grade ) ;
 
 	std::string	getName( void ) const ;
