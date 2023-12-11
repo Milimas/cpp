@@ -1,4 +1,6 @@
 #include "Array.hpp"
+#include <cstdlib>
+#include <ctime>
 
 int main( void )
 {
@@ -35,7 +37,7 @@ int main( void )
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << std::endl ;
     }
     try
     {
@@ -43,7 +45,7 @@ int main( void )
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << std::endl ;
     }
 
     std::cout << _array << std::endl ;

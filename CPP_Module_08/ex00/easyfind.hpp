@@ -4,10 +4,8 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <array>
 #include <list>
 #include <deque>
-#include <forward_list>
 
 template <class T>
 bool easyfind(T& container, const int toFind)

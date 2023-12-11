@@ -35,7 +35,7 @@ Array<T>& Array<T>::operator=( const Array<T>& other)
 template <typename T>
 T& Array<T>::operator[]( size_t index ) const
 {
-    if (index > size() - 1 || index < 0)
+    if (index > size() - 1 )
         throw Array<T>::OutOfBoundException() ;
     return (array[index]) ;
 }
