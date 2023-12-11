@@ -52,7 +52,7 @@ bool    ScalarConverter::isChar( std::string input )
 
 bool    ScalarConverter::isInt( double num, std::string input )
 {
-    if (input.find('.') != std::string::npos || num > INT_MAX || num < INT_MIN)
+    if (input.find('.') != std::string::npos || abs(num) > std::numeric_limits<int>::max())
         return (0) ;
     return (1) ;
 }
@@ -179,7 +179,9 @@ void    ScalarConverter::print( void )
         std::cout << "char: " << _char << std::endl ;
     else
         std::cout << "char: Non displayable" << std::endl ;
-    std::cout << "int: " << std::to_string(_int) << std::endl ;
-    std::cout << "float: " << std::to_string(_float) << "f" << std::endl ;
-    std::cout << "double: " << std::to_string(_double) << std::endl ;
+    std::ostringstream tmp ;
+    tmp << "int: " << _int << std::endl ;
+    tmp << "float: " << _float << "f" << std::endl ;
+    tmp << "double: " << _double << std::endl ;
+    std::cout << tmp.str() ;
 }
