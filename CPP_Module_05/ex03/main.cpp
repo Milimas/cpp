@@ -8,7 +8,7 @@ int main( void )
     {
         Bureaucrat  amine = Bureaucrat("Amine", 13) ;
         std::cout << amine << std::endl ;
-        AForm   *rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "home") ;
+        AForm   *rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "Amine") ;
         amine.signForm(*rrf) ;
         // amine.signForm(*rrf) ;
         amine.executeForm(*rrf) ;
@@ -23,7 +23,7 @@ int main( void )
     {
         Bureaucrat  amine = Bureaucrat("Amine", 4) ;
         std::cout << amine << std::endl ;
-        AForm   *rrf = someRandomIntern.makeForm("RobotomyRequestForm", "home") ;
+        AForm   *rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Amine") ;
         amine.signForm(*rrf) ;
         amine.executeForm(*rrf) ;
         delete rrf;
@@ -37,7 +37,7 @@ int main( void )
     {
         Bureaucrat  amine = Bureaucrat("Amine", 5) ;
         std::cout << amine << std::endl ;
-        AForm   *rrf = someRandomIntern.makeForm("PresidentialPardonForm", "home") ;
+        AForm   *rrf = someRandomIntern.makeForm("PresidentialPardonForm", "Amine") ;
         amine.signForm(*rrf) ;
         amine.executeForm(*rrf) ;
         delete rrf;

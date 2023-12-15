@@ -12,7 +12,7 @@ SRC =	main.cpp					\
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = Bureaucrat
+NAME = Intern
 
 all: $(NAME)
 

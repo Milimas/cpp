@@ -9,6 +9,7 @@ int main( void )
         Form        cdi = Form("cdi", 1, 1) ;
         std::cout << amine << std::endl ;
         amine.signForm(cdi) ;
+        std::cout << cdi.getName() << (cdi.getIsSigned() ? " is Signed" : "is Not Signed") << std::endl ;
     }
     catch(const std::exception& e)
     {
