@@ -26,11 +26,11 @@ Serializer::~Serializer( void )
 uintptr_t Serializer::serialize( Data* ptr )
 {
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
-    return ((uintptr_t)(void *)ptr) ;
+    return (reinterpret_cast<uintptr_t>(ptr)) ;
 }
 
 Data* Serializer::deserialize( uintptr_t raw )
 {
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
-    return ((Data*)raw) ;
+    return (reinterpret_cast<Data*>(raw)) ;
 }
