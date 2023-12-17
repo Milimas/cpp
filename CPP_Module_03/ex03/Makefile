@@ -1,4 +1,4 @@
-CC = c++
+CXX = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98
 
@@ -15,7 +15,7 @@ NAME = DiamondTrap
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)

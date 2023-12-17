@@ -1,4 +1,4 @@
-CC = c++
+CXX = c++
 
 CPPFLAGS += -Wall -Wextra -Werror -std=c++98
 
@@ -14,7 +14,7 @@ NAME = BraiiiiiiinnnzzzZ
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)

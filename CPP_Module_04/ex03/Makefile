@@ -1,4 +1,4 @@
-CC = c++
+CXX = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -18,10 +18,10 @@ NAME = Interface
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 preproc:
-	$(CC) $(PREPROCFLAG) $(SRC)
+	$(CXX) $(PREPROCFLAG) $(SRC)
 
 clean:
 	rm -f $(OBJ)
