@@ -32,11 +32,21 @@ void    identify( Base* p )
     B *b = dynamic_cast<B *>(p) ;
     C *c = dynamic_cast<C *>(p) ;
     if (a != NULL)
-        std::cout << "Object Type is A" << std::endl ;
+    {
+        std::cout << "Object pointer Type is A*" << std::endl ;
+        return ;
+    }
     if (b != NULL)
-        std::cout << "Object Type is B" << std::endl ;
+    {
+        std::cout << "Object pointer Type is B*" << std::endl ;
+        return ;
+    }
     if (c != NULL)
-        std::cout << "Object Type is C" << std::endl ;
+    {
+        std::cout << "Object pointer Type is C*" << std::endl ;
+        return ;
+    }
+    std::cout << "Object Type is Not A, B or C" << std::endl ;
 }
 
 void identify(Base& p)
@@ -46,6 +56,7 @@ void identify(Base& p)
 		A &a = dynamic_cast<A &>(p);
 		(void) a;
 		std::cout << "Object Type is A" << std::endl;
+        return ;
 	}
 	catch (std::exception &bc)
 	{
@@ -54,7 +65,8 @@ void identify(Base& p)
 	{
 		B &b = dynamic_cast<B &>(p);
 		(void) b;
-		std::cout << "Object type is B" << std::endl;
+		std::cout << "Object Type is B" << std::endl;
+        return ;
 	}
 	catch (std::exception &bc)
 	{
@@ -63,11 +75,13 @@ void identify(Base& p)
 	{
 		C &c = dynamic_cast<C &>(p);
 		(void) c;
-		std::cout << "Object type is C" << std::endl;
+		std::cout << "Object Type is C" << std::endl;
+        return ;
 	}
 	catch (std::exception &bc)
 	{
 	}
+    std::cout << "Object Type is Not A, B or C" << std::endl ;
 }
 
 int main( void )
