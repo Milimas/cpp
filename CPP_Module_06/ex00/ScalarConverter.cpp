@@ -52,7 +52,7 @@ bool    ScalarConverter::isChar( std::string input )
 
 bool    ScalarConverter::isInt( double num, std::string input )
 {
-    if (input.find('.') != std::string::npos || abs(num) > std::numeric_limits<int>::max())
+    if (input.find('.') != std::string::npos || std::abs(num) > std::numeric_limits<int>::max())
         return (0) ;
     return (1) ;
 }
@@ -63,7 +63,7 @@ bool    ScalarConverter::isFloat( double num, std::string input )
         return (0) ;
     if (input.find('f', input.find('f') + 1) != std::string::npos)
         return (0) ;
-    if (abs(num) > std::numeric_limits<float>::max())
+    if (std::abs(num) > std::numeric_limits<float>::max())
         return (0) ;
     return (1) ;
 }
@@ -72,7 +72,7 @@ bool    ScalarConverter::isDouble( double num, std::string input )
 {
     if (input.find('f') != std::string::npos)
         return (0) ;
-    if (abs(num) > std::numeric_limits<double>::max())
+    if (std::abs(num) > std::numeric_limits<double>::max())
         return (0) ;
     return (1) ;
 }
