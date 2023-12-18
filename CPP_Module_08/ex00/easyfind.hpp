@@ -8,15 +8,14 @@
 #include <deque>
 
 template <class T>
-bool easyfind(T& container, const int toFind)
+typename T::iterator easyfind(T& container, const int toFind)
 {
-    if (std::find(container.begin(), container.end(), toFind) != container.end())
-    {
+    typename T::iterator found = std::find(container.begin(), container.end(), toFind);
+    if (found != container.end())
         std::cout << "Success Found" << std::endl ;
-        return (true) ;
-    }
-    std::cout << "Not Found" << std::endl ;
-    return (false) ;
+    else
+        std::cout << "Not Found" << std::endl ;
+    return (found) ;
 }
 
 #endif
