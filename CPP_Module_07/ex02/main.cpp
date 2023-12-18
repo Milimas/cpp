@@ -29,7 +29,8 @@ int main( void )
     std::cout << "Copy Constructor: " << std::endl ; 
     Array<int> _copy(_array) ;
     std::cout << "Copy Assignment: " << std::endl ; 
-    Array<int> _assign = _copy ;
+    Array<int> _assign ;
+    _assign = _copy ;
 
     try
     {
@@ -48,8 +49,9 @@ int main( void )
         std::cerr << e.what() << std::endl ;
     }
 
-    std::cout << _array << std::endl ;
+    // std::cout << _array << std::endl ;
 
     delete [] _int ;
+    
     return (0) ;
 }

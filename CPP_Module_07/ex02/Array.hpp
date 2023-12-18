@@ -20,23 +20,12 @@ public:
 
     size_t  size( void ) const ;
 
-    class OutOfBoundException: public std::exception
+    class OutOfBoundException: public std::out_of_range
     {
-    private:
-		std::string			msg ;
     public:
-		OutOfBoundException( void ) throw()
-		{
-			msg = "Exception::OutOfBoundException" ;
-		} ;
-        OutOfBoundException( std::string msg ) throw() {
-			this->msg = "Exception::OutOfBoundException::" + msg ;
-		} ;
+		OutOfBoundException( void ) throw() 
+            : out_of_range("Exception::OutOfBoundException") {} ;
         virtual ~OutOfBoundException( void ) throw() {} ;
-        const char* what( void ) const throw() 
-        {
-            return (msg.c_str()) ;
-        } ;
     } ;
 };
 
