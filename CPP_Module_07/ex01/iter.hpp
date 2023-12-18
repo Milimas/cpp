@@ -4,9 +4,11 @@
 #include <iostream>
 
 template <typename T>
-void    iter(T* array, size_t length, void (*fun)(T))
+void    iter(const T* array, size_t length, void (*fun)(T))
 {
-    for (size_t i = 0; i < length; i++)
+    if (!array || !fun)
+        return ;
+    for (size_t i = 0; (int)i < (int)length; i++)
         fun(array[i]);
 }
 

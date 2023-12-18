@@ -10,11 +10,9 @@ Array<T>::Array( void ) : array(NULL), _size(0)
 }
 
 template <typename T>
-Array<T>::Array( size_t n ) : array(new T[n]), _size(n)
+Array<T>::Array( size_t n ) : array(new T[n]()), _size(n)
 {
     std::cerr << RED << __PRETTY_FUNCTION__ << NORMAL << std::endl ;
-    for (size_t i = 0; i < _size; i++)
-        array[i] = 0 ;
 }
 
 template <typename T>
@@ -41,7 +39,7 @@ Array<T>& Array<T>::operator=( const Array<T>& other)
 template <typename T>
 T& Array<T>::operator[]( size_t index ) const
 {
-    if (index > size() - 1 )
+    if (index >= size() )
         throw Array<T>::OutOfBoundException() ;
     return (array[index]) ;
 }

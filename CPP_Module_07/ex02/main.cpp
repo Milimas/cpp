@@ -51,6 +51,11 @@ int main( void )
 
     // std::cout << _array << std::endl ;
 
+    Array<std::string> _string(10) ;
+    _string[0] = "1337" ;
+    _string[1] = "42" ;
+    std::cout << _string << std::endl ;
+
     delete [] _int ;
     
     return (0) ;
