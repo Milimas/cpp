@@ -7,10 +7,8 @@
 #include <algorithm>
 #include <ctime>
 #include <fstream>
-#include <iomanip>
 #include <string>
 #include <sstream>
-#include <istream>
 #include <cstring>
 
 // Error message
