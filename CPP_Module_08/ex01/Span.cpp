@@ -8,6 +8,7 @@ Span::Span( void ) : _maxSize(0)
 Span::Span( unsigned int _maxSize ) : _maxSize(_maxSize)
 {
     std::cerr << __PRETTY_FUNCTION__ << std::endl ;
+    _vector.reserve(_maxSize) ;
 }
 
 Span::Span( const Span& other ) : _maxSize(other._maxSize), _vector(other._vector)
@@ -65,10 +66,8 @@ int Span::shortestSpan( void )
 void Span::fill( void )
 {
     std::srand(time(NULL)) ;
-    for (size_t i = 0; i < _maxSize - _vector.size() ; i++)
-    {
-        addNumber(rand()) ;
-    }
+    _vector.resize(_maxSize) ;
+    std::generate_n(_vector.begin(), _maxSize, std::rand) ;
 }
 
 void Span::print( void )

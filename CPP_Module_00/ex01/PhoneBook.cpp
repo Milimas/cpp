@@ -161,7 +161,7 @@ bool PhoneBook::isPhoneNumber( std::string str )
 {
     for (int i = 0 ; str[i] ; i++)
     {
-        if (!isnumber(str[i]))
+        if (!isdigit(str[i]))
             return (false) ;
     }
     return (true) ;

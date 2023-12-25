@@ -30,9 +30,9 @@ void BitcoinExchange::setData( const std::string& dataPath )
 
     dataFile.open(dataPath.c_str()) ;
     if (!dataFile)
-        error(FILE_NOT_OPEN, dataPath, EXIT) ;
+        error(FILE_NOT_OPEN, dataPath, ERR_EXIT) ;
     if (dataFile.peek() == std::ifstream::traits_type::eof())
-        error(FILE_IS_EMPTY, dataPath, EXIT) ;
+        error(FILE_IS_EMPTY, dataPath, ERR_EXIT) ;
     while ( dataFile.good() )
     {
         std::getline(dataFile, value) ; 
@@ -65,9 +65,9 @@ void BitcoinExchange::exchange( const std::string& inputPath )
 
     inputFile.open(inputPath.c_str()) ;
     if (!inputFile)
-        error(FILE_NOT_OPEN, inputPath, EXIT) ;
+        error(FILE_NOT_OPEN, inputPath, ERR_EXIT) ;
     if (inputFile.peek() == std::ifstream::traits_type::eof())
-        error(FILE_IS_EMPTY, inputPath, EXIT) ;
+        error(FILE_IS_EMPTY, inputPath, ERR_EXIT) ;
     while ( inputFile.good() )
     {
         std::string value ;

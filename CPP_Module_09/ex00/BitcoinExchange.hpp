@@ -26,7 +26,7 @@
 // Error type
 #define EXCEPT              true                                // Throw exception 
 #define NO_EXCEPT           false                               // Don't throw exception
-#define EXIT                -1                                  // Exit with failure
+#define ERR_EXIT            -1                                  // Exit with failure
 
 
 class BitcoinExchange
