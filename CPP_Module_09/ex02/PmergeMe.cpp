@@ -1,7 +1,5 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::Deque PmergeMe::_deq ;
-PmergeMe::Vector PmergeMe::_vec ;
 
 PmergeMe::PmergeMe( void ) 
 {
@@ -37,17 +35,12 @@ void PmergeMe::error( const std::string& _error, const std::string& msg, const i
         exit(EXIT_FAILURE) ;
 }
 
-void PmergeMe::sortVector( char **argv, size_t size )
+
+void PmergeMe::printElem( const int& elem )
 {
-    std::cout << "size " << size << std::endl ;
-    size_t i = 0 ;
-    while (i < size)
-    {
-        _vec.push_back(strToInt(argv[i], NULL)) ;
-        std::cout << _vec.back() << std::endl ;
-        i++ ;
-    }
+    std::cout << elem << " " ;
 }
+
 
 int PmergeMe::strToInt(const std::string& s, char *end, int base)
 {
@@ -65,10 +58,4 @@ int PmergeMe::strToInt(const std::string& s, char *end, int base)
     if (res < 0)
         error(BAD_INPUT, "NEGATIVE => " + s, EXCEPT) ;
     return (res);
-}
-
-void PmergeMe::sortDeque( char **argv, size_t size )
-{
-    (void)argv ;
-    (void)size ;
 }

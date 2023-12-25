@@ -22,11 +22,14 @@ int main( int argc, char **argv )
         std::cout << USAGE << std::endl ;
         return (2) ;
     }
-    (void)argv ;
-    std::clock_t timer = clock() ;
-    PmergeMe::sortVector( &argv[1], argc - 1 ) ;
-    timer = clock() - timer ;
-    std::cout << "elapse: " << std::fixed << (timer / (double)CLOCKS_PER_SEC) << std::endl ;
+    std::vector<int> _v ;
+    std::deque<int> _d ;
+
+    (void) argv ;
+    PmergeMe::fill(_v, argv + 1, argc - 1) ;
+    PmergeMe::fill(_d, argv + 1, argc - 1) ;
+    PmergeMe::sort( _v ) ;
+    PmergeMe::sort( _d ) ;
     return (EXIT_SUCCESS) ;
 }
 
