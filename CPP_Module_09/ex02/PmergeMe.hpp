@@ -74,7 +74,14 @@ void PmergeMe::fill( T& container, char **argv, size_t size )
 {
     size_t i = 0 ;
     while (i < size)
-        container.push_back(strToInt(argv[i++], NULL)) ;
+    {
+        std::stringstream ss(argv[i++]) ;
+        std::string num ;
+        while (ss >> num)
+        {
+            container.push_back(strToInt(num, NULL)) ;
+        }
+    }
 }
 
 template<typename T>

@@ -52,12 +52,12 @@ int main( int argc, char **argv )
     if (_dSorted == _d.end())
         std::cout << "deque: ✅ Success" << std::endl ;
     else
-        std::cout << "Error: ❌ " << *_dSorted << std::endl ;
+        std::cerr << "Error: ❌ " << *_dSorted << std::endl ;
     std::vector<int>::iterator _vSorted = std::adjacent_find(_v.begin(), _v.end(), std::greater<int>()) ;
     if (_vSorted == _v.end())
         std::cout << "vector: ✅ Success" << std::endl ;
     else
-        std::cout << "Error: ❌ " << *_vSorted << std::endl ;
+        std::cerr << "Error: ❌ " << *_vSorted << std::endl ;
 
     return (EXIT_SUCCESS) ;
 }
