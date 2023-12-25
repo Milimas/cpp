@@ -29,17 +29,21 @@ public:
     typedef std::deque<int> Deque ;
 
     template<typename T>
-    static void sort( T& conatiner ) ;
-
+    static clock_t sort( T& container ) ;
     template<typename T>
     static void fill( T& container, char **argv, size_t size ) ;
+    
+    template<typename T>
+    static void printTime ( T& container, clock_t time ) ;
+    static void printElem( const int& elem ) ;
 
 private:
     static const size_t k = 5;
 
     static void error( const std::string& error, const std::string& msg, const int isExcept = EXCEPT ) ;
     static int strToInt(const std::string& s, char *end = NULL, int base = 10) ;
-    static void printElem( const int& elem ) ;
+    static std::string getType( const Vector& container ) ;
+    static std::string getType( const Deque& container ) ;
     
     template<typename T>
     static void _sort ( T& container ) ;
@@ -58,19 +62,11 @@ private:
 } ;
 
 template<typename T>
-void PmergeMe::sort( T& conatiner )
+clock_t PmergeMe::sort( T& container )
 {
-    std::cout << "Before: " ;
-    std::for_each(conatiner.begin(), conatiner.end(), printElem) ;
-    std::cout << std::endl ;
-    std::clock_t timer = clock() ;
-    _sort(conatiner) ;
-    timer = clock() - timer ;
-    std::cout << "after: " ;
-    std::for_each(conatiner.begin(), conatiner.end(), printElem) ;
-    std::cout << std::endl ;
-    std::cout << "Time to process a range of : " << conatiner.size()
-            << " elements with " << typeid(conatiner).name() << " : " << std::fixed << (timer / (double)CLOCKS_PER_SEC) << std::endl ;
+    std::clock_t start = clock() ;
+    _sort(container) ;
+    return (clock() - start) ;
 }
 
 template<typename T>
@@ -116,23 +112,31 @@ void PmergeMe::insertionSort( T& container )
 
 template<typename T>
 void PmergeMe::mergeSort( T& container, const T& right, const T& left )
-    {
-        int rinx = 0 ;
-        int linx = 0 ;
+{
+    int rinx = 0 ;
+    int linx = 0 ;
 
-        int rSize = right.size() ;
-        int lSize = left.size() ;
-        for (int i = 0 ; i < rSize + lSize ; i++)
-        {
-            if (rinx == rSize)
-                container.push_back(left[linx++]) ;
-            else if (linx == lSize)
-                container.push_back(right[rinx++]) ;
-            else if (right[rinx] > left[linx])
-                container.push_back(left[linx++]) ;
-            else
-                container.push_back(right[rinx++]) ;
-        }
+    int rSize = right.size() ;
+    int lSize = left.size() ;
+    for (int i = 0 ; i < rSize + lSize ; i++)
+    {
+        if (rinx == rSize)
+            container.push_back(left[linx++]) ;
+        else if (linx == lSize)
+            container.push_back(right[rinx++]) ;
+        else if (right[rinx] > left[linx])
+            container.push_back(left[linx++]) ;
+        else
+            container.push_back(right[rinx++]) ;
     }
+}
+
+template<typename T>
+void PmergeMe::printTime ( T& container, clock_t time )
+{
+    std::cout << "Time to process a range of : " << container.size()
+            << " elements with " << getType(container) << " : " << std::fixed << (time / (double)CLOCKS_PER_SEC) << " s" << std::endl ;
+
+}
 
 #endif
