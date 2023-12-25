@@ -20,7 +20,7 @@
 
 // Error message
 #define USAGE               "Usage: PmergeMe <set of positive numbers>."
-#define BAD_INPUT           "Bad input."
+#define BAD_INPUT           "❌ Bad input ."
 
 class PmergeMe
 {
