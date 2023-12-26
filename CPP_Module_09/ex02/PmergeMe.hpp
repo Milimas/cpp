@@ -54,7 +54,6 @@ private:
     template<typename T>
     static void mergeSort( T& container, const T& right, const T& left ) ;
 
-
     PmergeMe( void ) ;
     PmergeMe( const PmergeMe& other ) ;
     PmergeMe& operator=( const PmergeMe& other ) ;
