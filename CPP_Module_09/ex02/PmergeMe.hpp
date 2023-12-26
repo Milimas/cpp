@@ -29,7 +29,7 @@ public:
     typedef std::deque<int> Deque ;
 
     template<typename T>
-    static clock_t sort( T& container ) ;
+    static clock_t sort( T& container, const size_t k = 5 ) ;
     template<typename T>
     static void fill( T& container, char **argv, size_t size ) ;
     
@@ -38,15 +38,13 @@ public:
     static void printElem( const int& elem ) ;
 
 private:
-    static const size_t k = 5;
-
     static void error( const std::string& error, const std::string& msg, const int isExcept = EXCEPT ) ;
     static int strToInt(const std::string& s, char *end = NULL, int base = 10) ;
     static std::string getType( const Vector& container ) ;
     static std::string getType( const Deque& container ) ;
     
     template<typename T>
-    static void _sort ( T& container ) ;
+    static void _sort ( T& container, const size_t k = 5 ) ;
 
     template<typename T>
     static void insertionSort( T& container ) ;
@@ -61,10 +59,10 @@ private:
 } ;
 
 template<typename T>
-clock_t PmergeMe::sort( T& container )
+clock_t PmergeMe::sort( T& container, const size_t k )
 {
     std::clock_t start = clock() ;
-    _sort(container) ;
+    _sort(container, k) ;
     return (clock() - start) ;
 }
 
@@ -84,7 +82,7 @@ void PmergeMe::fill( T& container, char **argv, size_t size )
 }
 
 template<typename T>
-void PmergeMe::_sort ( T& container )
+void PmergeMe::_sort ( T& container, const size_t k )
 {
     if ( container.size() > k )
     {
