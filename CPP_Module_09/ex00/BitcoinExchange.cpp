@@ -107,7 +107,7 @@ double BitcoinExchange::convertInputPrice( const std::string& value )
     std::stringstream ss(value) ;
     double rate ;
     ss >> rate ;
-    if (!ss.eof() && ss.fail())
+    if (!ss.eof() || ss.fail())
         error(BAD_INPUT, value) ;
     if (rate < 0)
         error(NOT_POSITIVE, "") ;
