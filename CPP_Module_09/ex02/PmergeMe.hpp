@@ -6,12 +6,10 @@
 #include <algorithm>
 #include <deque>
 #include <vector>
-#include <unistd.h>
 #include <ctime>
 #include <string>
 #include <cerrno>
 #include <climits>
-#include <typeinfo>
 
 // Error type
 #define EXCEPT              true                                // Throw exception 
