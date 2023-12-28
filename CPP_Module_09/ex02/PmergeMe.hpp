@@ -37,6 +37,7 @@ public:
     }
     static void fill( char **argv, size_t size )
     {
+        start = clock() ;
         size_t i = 0 ;
         std::stringstream ss ;
         while (i < size)

@@ -9,25 +9,6 @@ int main( int argc, char **argv )
     }
 
     (void)argv ;
-    // Fill containers
-    std::vector<int> _v ;
-    std::deque<int> _d ;
-
-    PmergeMe<int, std::vector>::fill( argv + 1, argc - 1 ) ;
-    PmergeMe<int, std::deque>::fill( argv + 1, argc - 1 ) ;
-    // size_t size = PmergeMe<int, std::vector>::p.size() ;
-    // for (size_t i = 0; i < size; i++)
-    // {
-    //     std::cout << PmergeMe<int, std::vector>::p[i].first << " " << PmergeMe<int, std::vector>::p[i].second << std::endl ;
-    // }
-    
-    // size = _v.size() ;
-    // for (size_t i = 0; i < size; i++)
-    // {
-    //     std::cout << _v[i] << std::endl ;
-    // }
-
-
     // Numbers before sort
     std::cout << "Before:" ;
     for (int i = 1; i < argc; i++)
@@ -36,8 +17,14 @@ int main( int argc, char **argv )
     }
     std::cout << std::endl ;
 
-    // // Sort and recond timing
+    // Fill containers
+    // Sort and record timing
+    std::vector<int> _v ;
+    PmergeMe<int, std::vector>::fill( argv + 1, argc - 1 ) ;
     clock_t vTime = PmergeMe<int, std::vector>::sort( _v ) ;
+    
+    std::deque<int> _d ;
+    PmergeMe<int, std::deque>::fill( argv + 1, argc - 1 ) ;
     clock_t dTime = PmergeMe<int, std::deque>::sort( _d ) ;
 
     // Number after sort
