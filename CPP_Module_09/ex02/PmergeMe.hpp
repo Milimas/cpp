@@ -27,13 +27,14 @@ class PmergeMe
 {
 public:
     static C<std::pair<T,T> > p ;
-    static C<T> res ;
-    
+    static std::clock_t start ;
 
-    // typedef std::vector<int> Vector ;
-    // typedef std::deque<int> Deque ;
-
-    // static clock_t sort( C& container, const size_t k = 5 ) ;
+    static clock_t sort( C<T>& container )
+    {
+        _sort(p) ;
+        insertionSort(container, p) ;
+        return (clock() - start) ;
+    }
     static void fill( char **argv, size_t size )
     {
         size_t i = 0 ;
@@ -42,62 +43,101 @@ public:
         {
             ss << argv[i++] << " " ; 
         }
-        T num1 ;
-        T num2 ;
+        std::string num1 ;
+        std::string num2 ;
         while (ss >> num1 >> num2)
         {
-            if (num1 < num2)
-                std::swap(num1, num2) ;
-            PmergeMe::p.push_back(std::make_pair(num1, num2)) ;
-            num1 = -1 ;
+            int n1 = strToInt(num1) ;
+            int n2 = strToInt(num2) ;
+            if (n1 < n2)
+                std::swap(n1, n2) ;
+            PmergeMe::p.push_back(std::make_pair(n1, n2)) ;
+            num1 = "" ;
+            num2 = "" ;
         }
-        if (num1 > 0)
-            PmergeMe::p.push_back(std::make_pair(-1, num1)) ;
-        _sort(p) ;
-        insertionSort(p) ;   
+        if (!num1.empty())
+            PmergeMe::p.push_back(std::make_pair(-1, strToInt(num1))) ;
     }
     
-    // template<typename C>
-    // static void printTime ( C& container, clock_t time ) ;
-    // static void printElem( const int& elem ) ;
+    static void printTime ( C<T>& container, clock_t time )
+    {
+        std::cout << "Time to process a range of : " << container.size()
+            << " elements with " << getType(container) << " : " << std::fixed << (time / (double)CLOCKS_PER_SEC) << " s" << std::endl ;
+
+    }
+    static void printElem( const T& elem )
+    {
+        std::cout << " " << elem ;
+    }
 
 private:
 
-    // static void error( const std::string& error, const std::string& msg, const int isExcept = EXCEPT ) ;
-    // static int strToInt(const std::string& s, char *end = NULL, int base = 10) ;
-    // static std::string getType( const Vector& container ) ;
-    // static std::string getType( const Deque& container ) ;
-    
-    static void _sort ( C<std::pair<int,int> >& container )
+    static void error( const std::string& _error, const std::string& msg, const int isExcept = EXCEPT )
     {
-        if (container.size() == 1)
-            return ;
-        int pvt = (container.size() / 2) + (container.size() % 2) ;
-        C<std::pair<int,int> > right(container.begin(), container.begin() + pvt) ;
-        C<std::pair<int,int> > left(container.begin() + pvt, container.end()) ;
-        container.clear() ;
-        _sort(right) ;
-        _sort(left) ;
-        mergeSort(container, right, left) ;
+        std::string _msg = "Error: " + _error + " " ;
+        if (!msg.empty())
+            _msg += "\"" + msg + "\"" ;
+        if (isExcept == true)
+            throw std::runtime_error(_msg) ;
+        else
+            std::cerr << _msg << std::endl ;
+        if (isExcept == -1)
+            exit(EXIT_FAILURE) ;
     }
 
-    static void insertionSort( C<std::pair<T,T> >& container ) 
+    static int strToInt(const std::string& s, char *end = NULL, int base = 10)
     {
-        typename C<std::pair<T,T> >::iterator it = container.begin() ;
-        res.push_back(it->second) ;
-        res.push_back(it->first) ;
+        int res = 0;
+        long  l;
+        errno = 0;
+        l = strtol(s.c_str(), &end, base);
+        if ((errno == ERANGE && l == LONG_MAX) || l > INT_MAX)
+            error(BAD_INPUT, "OVERFLOW => " + s, ERR_EXIT) ;
+        if ((errno == ERANGE && l == LONG_MIN) || l < INT_MIN)
+            error(BAD_INPUT, "UNDERFLOW => " + s, ERR_EXIT) ;
+        if (*s.c_str() == '\0' || *end != '\0')
+            error(BAD_INPUT, "INCONVERTIBLE => " + s, ERR_EXIT) ;
+        res = l;
+        if (res < 0)
+            error(BAD_INPUT, "NEGATIVE => " + s, ERR_EXIT) ;
+        return (res);
+    }
+    static std::string getType( const std::vector<T>& container )
+    {
+        (void)container ;
+        return ("std::vector<int>") ;
+    }
+    static std::string getType( const std::deque<T>& container )
+    {
+        (void)container ;
+        return ("std::deque<int>") ;
+    }
+    
+    static void _sort ( C<std::pair<int,int> >& pair )
+    {
+        if (pair.size() == 1)
+            return ;
+        int pvt = (pair.size() / 2) + (pair.size() % 2) ;
+        C<std::pair<int,int> > right(pair.begin(), pair.begin() + pvt) ;
+        C<std::pair<int,int> > left(pair.begin() + pvt, pair.end()) ;
+        pair.clear() ;
+        _sort(right) ;
+        _sort(left) ;
+        mergeSort(pair, right, left) ;
+    }
+
+    static void insertionSort( C<T>& container,  C<std::pair<T,T> >& pairs ) 
+    {
+        typename C<std::pair<T,T> >::iterator it = pairs.begin() ;
+        container.push_back(it->second) ;
+        if (it->first > 0)
+            container.push_back(it->first) ;
         it++ ;
-        for ( ; it < container.end(); it++)
+        for ( ; it < pairs.end(); it++)
         {
             if (it->first > 0)
-                res.push_back(it->first) ;
-            // typename C<T>::iterator bs = res.end() ;
-            // while (bs > res.begin() && it->second < bs[-1] )
-            // {
-            //     bs-- ;
-            // }
-            // res.insert(bs, it->second) ;
-            res.insert(std::lower_bound(res.begin(), res.end(), it->second), it->second) ;
+                container.push_back(it->first) ;
+            container.insert(std::lower_bound(container.begin(), container.end(), it->second), it->second) ;
         }  
     }
 
@@ -129,98 +169,9 @@ private:
 
 template <typename T, template <class _Tp = T, class A = std::allocator<T> > class C >
 C<std::pair<T,T> > PmergeMe<T, C>::p ;
-template <typename T, template <class _Tp = T, class A = std::allocator<T> > class C >
-C<T > PmergeMe<T, C>::res ;
-
 
 template <typename T, template <class _Tp = T, class A = std::allocator<T> > class C >
-PmergeMe<T, C>::PmergeMe( void ) 
-{
+clock_t  PmergeMe<T, C>::start = clock() ;
 
-}
-
-template <typename T, template <class _Tp = T, class A = std::allocator<T> > class C >
-PmergeMe<T, C>::PmergeMe( const PmergeMe& other ) 
-{
-    (void)other ;
-}
-
-template <typename T, template <class _Tp = T, class A = std::allocator<T> > class C >
-PmergeMe<T, C>& PmergeMe<T, C>::operator=( const PmergeMe& other ) 
-{
-    (void)other ;
-    return (*this) ;
-}
-
-template <typename T, template <class _Tp = T, class A = std::allocator<T> > class C >
-PmergeMe<T, C>::~PmergeMe( void ) 
-{
-
-}
-
-// template<typename C>
-// clock_t PmergeMe::sort( C& container, const size_t k )
-// {
-//     std::clock_t start = clock() ;
-//     _sort(container, k) ;
-//     return (clock() - start) ;
-// }
-
-// template <typename T, template <class _Tp = T, class A = std::allocator<T> > class C >
-// void PmergeMe<T, C<T> >::_sort ( void )
-// {
-//         int pvt = (container.size() / 2) + (container.size() % 2) ;
-//         T right(container.begin(), container.begin() + pvt) ;
-//         T left(container.begin() + pvt, container.end()) ;
-//         container.clear() ;
-//         _sort(right) ;
-//         _sort(left) ;
-//         mergeSort(container, right, left) ;
-// }
-
-// template<typename C>
-// void PmergeMe::insertionSort( C& container )
-// {
-//     for (typename C::iterator it = container.begin(); it < container.end() - 1; it++)
-//     {
-//         typename C::iterator j = it + 1 ;
-//         int tmp = *j ;
-//         while (j > container.begin() && j[-1] > tmp)
-//         {
-//             *j = j[-1] ;
-//             j-- ;
-//         }
-//         *j = tmp ;
-//     }  
-// }
-
-// template<typename C>
-// void PmergeMe::mergeSort( C& container, const C& right, const C& left )
-// {
-//     int rinx = 0 ;
-//     int linx = 0 ;
-
-//     int rSize = right.size() ;
-//     int lSize = left.size() ;
-//     for (int i = 0 ; i < rSize + lSize ; i++)
-//     {
-//         if (rinx == rSize)
-//             container.push_back(left[linx++]) ;
-//         else if (linx == lSize)
-//             container.push_back(right[rinx++]) ;
-//         else if (right[rinx] > left[linx])
-//             container.push_back(left[linx++]) ;
-//         else
-//             container.push_back(right[rinx++]) ;
-//     }
-// }
-
-// template<typename C>
-// void PmergeMe::printTime ( C& container, clock_t time )
-// {
-//     std::cout << "Time to process a range of : " << container.size()
-//             << " elements with " << getType(container) << " : " << std::fixed << (time / (double)CLOCKS_PER_SEC) << " s" << std::endl ;
-
-// }
 
 #endif
