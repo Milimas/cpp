@@ -105,6 +105,48 @@ x = -0.00390625
 
 ## day 03
 
+### 
+
+### ex03: The Diamond Problem
+
+The Diamond Problem is a term in object-oriented programming, particularly in languages that support multiple inheritance.
+It arises when a class inherits from two classes that have a common ancestor.
+Scenario:
+
+Suppose Class A is the common ancestor, and both Class B and Class C inherit from A.
+Class D inherits from both Class B and Class C.
+Issue:
+
+If there are methods or attributes in Class A, ambiguity arises in Class D because it inherits the same members through both Class B and Class C.
+Example:
+
+```cpp
+class A { /* ... */ };
+class B : public A { /* ... */ };
+class C : public A { /* ... */ };
+class D : public B, public C { /* ... */ };
+```
+Solutions to the Diamond Problem:
+Virtual Inheritance:
+
+Use virtual inheritance for the common ancestor (Class A).
+This ensures that there's only one instance of Class A in Class D, avoiding ambiguity.
+Example:
+```cpp
+class B : public virtual A { /* ... */ };
+class C : public virtual A { /* ... */ };
+```
+Override Ambiguous Methods:
+
+If there are ambiguous methods, override them in Class D to provide a specific implementation.
+Example:
+```cpp
+Copy code
+class D : public B, public C {
+  void someMethod() override { /* specific implementation */ }
+};
+```
+
 ## resouces:
 
 ### general resources
