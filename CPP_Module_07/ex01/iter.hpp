@@ -4,7 +4,7 @@
 #include <iostream>
 
 template <typename T>
-void    iter(const T* array, size_t length, void (*fun)(T))
+void    iter(const T* array, size_t length, void (*fun)(const T&))
 {
     if (!array || !fun)
         return ;
@@ -13,9 +13,12 @@ void    iter(const T* array, size_t length, void (*fun)(T))
 }
 
 template <typename T>
-void    print( T elem )
+void    iter(T* array, size_t length, void (*fun)(T&))
 {
-    std::cout << elem << std::endl ;
+    if (!array || !fun)
+        return ;
+    for (size_t i = 0; (int)i < (int)length; i++)
+        fun(array[i]);
 }
 
 #endif

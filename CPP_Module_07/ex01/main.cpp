@@ -1,17 +1,33 @@
 #include "iter.hpp"
 
-int main( void )
+class Awesome
 {
-    int array[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} ;
-    double _double[] = {0.0, 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9} ;
-    std::string str = "Hello" ;
+  public:
+    Awesome( void ) : _n( 42 ) { return; }
+    int get( void ) const { return this->_n; }
+  private:
+    int _n;
+};
 
-    ::iter(array, 10, ::print) ;
-    std::cout << std::endl ;
-    ::iter(str.c_str(), str.length(), ::print) ;
-    std::cout << std::endl ;
-    ::iter(_double, 10, ::print) ;
-    std::cout << std::endl ;
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
+{
+  o << rhs.get();
+  return o;
+}
 
-    return (0) ;    
+template< typename T >
+void print( T& x )
+{
+  std::cout << x << std::endl;
+  return;
+}
+
+int main() {
+  int tab[] = { 0, 1, 2, 3, 4 };
+  Awesome tab2[5];
+
+  iter( tab, 5, print<const int> );
+  iter( tab2, 5, print<Awesome> );
+
+  return 0;
 }
